@@ -10,8 +10,8 @@ public:
 	Parser &operator=(Parser const &) = delete;
 	Parser(Parser const &) = delete;
 
-	void commandLineInput();
-	void fileInput(const char *fileName);
+	void readFromCommandLine();
+	void readFromFile(const char *fileName);
 
 };
 

@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.14)
+cmake_minimum_required(VERSION 3.13)
 project(avm)
 
 set(CMAKE_CXX_STANDARD 11)
@@ -6,4 +6,12 @@ set(CMAKE_CXX_STANDARD 11)
 
 add_executable(avm
         main.cpp
-        Stack.class.cpp IOperand.hpp OperandsFactory.cpp OperandsFactory.hpp Operand.hpp Stack.cpp Stack.hpp Parser.cpp Parser.hpp)
+        IOperand.hpp
+        OperandsFactory.cpp
+        OperandsFactory.hpp
+        Operand.hpp
+        Stack.cpp
+        Stack.hpp
+        Parser.cpp
+        Parser.hpp
+        )

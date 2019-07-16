@@ -25,9 +25,12 @@
 int main () {
 	Stack s;
 
+
+//	OperandsFactory & a = OperandsFactory::instance();
+	const IOperand *a = OperandsFactory::instance().createOperand(INT8, "42");
 /*	s.push("1");
 	s.push("2");
 	s.push("3");*/
-	s.add();
+//	s.add();
 	return 9;
 }

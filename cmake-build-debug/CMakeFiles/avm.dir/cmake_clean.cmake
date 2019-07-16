@@ -1,6 +1,5 @@
 file(REMOVE_RECURSE
   "CMakeFiles/avm.dir/main.cpp.o"
-  "CMakeFiles/avm.dir/Stack.class.cpp.o"
   "CMakeFiles/avm.dir/OperandsFactory.cpp.o"
   "CMakeFiles/avm.dir/Stack.cpp.o"
   "CMakeFiles/avm.dir/Parser.cpp.o"

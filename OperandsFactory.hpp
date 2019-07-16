@@ -6,6 +6,9 @@
 #include <functional>
 
 //TODO: pulymorth in factory method pattern?
+// https://codereview.stackexchange.com/questions/197486/singleton-class-and-correct-way-to-access-it-in-c
+
+# define  FACTORY OperandsFactory::instance()
 
 class OperandsFactory {
 private:
@@ -29,13 +32,25 @@ private:
 	IOperand const * createFloat( std::string const & value ) const;
 	IOperand const * createDouble( std::string const & value ) const;
 
+	~OperandsFactory();
+
 public:
 	OperandsFactory(OperandsFactory const &) = delete;
 	OperandsFactory &operator=(OperandsFactory const &) = delete;
 
 	IOperand const *createOperand( eOperandType type, std::string const & value ) const;
 
-	~OperandsFactory();
+	static OperandsFactory &instance() {
+
+		static OperandsFactory instance;
+
+		return instance;
+//		static OperandsFactory *instance = new OperandsFactory();
+
+//		return *instance;
+	}
+
+
 };
 
 #endif //OPERANDSFACTORY_HPP

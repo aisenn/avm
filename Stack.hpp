@@ -38,7 +38,7 @@ public:
 	}*/
 
 
-	void add() {
+	/*void add() {
 		if (this->size() > 1)
 		{
 			auto lop = this->top();
@@ -101,7 +101,7 @@ public:
 		}
 		else
 			std::cout << "Stack size is les then 2" << std::endl;
-	}
+	}*/
 };
 
 #endif //STACK_HPP

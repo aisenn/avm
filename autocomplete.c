@@ -18,8 +18,7 @@ char *character_names[] = {
 		NULL
 };
 
-int
-main(int argc, char *argv[])
+int main(int argc, char *argv[])
 {
 	rl_attempted_completion_function = character_name_completion;
 
@@ -33,15 +32,13 @@ main(int argc, char *argv[])
 	return 0;
 }
 
-char **
-character_name_completion(const char *text, int start, int end)
+char **character_name_completion(const char *text, int start, int end)
 {
 	rl_attempted_completion_over = 1;
 	return rl_completion_matches(text, character_name_generator);
 }
 
-char *
-character_name_generator(const char *text, int state)
+char *character_name_generator(const char *text, int state)
 {
 	static int list_index, len;
 	char *name;

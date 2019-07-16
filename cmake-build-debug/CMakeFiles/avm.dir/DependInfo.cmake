@@ -4,11 +4,10 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/Users/aabdulla/CLionProjects/avm/OperandsFactory.cpp" "/Users/aabdulla/CLionProjects/avm/cmake-build-debug/CMakeFiles/avm.dir/OperandsFactory.cpp.o"
-  "/Users/aabdulla/CLionProjects/avm/Parser.cpp" "/Users/aabdulla/CLionProjects/avm/cmake-build-debug/CMakeFiles/avm.dir/Parser.cpp.o"
-  "/Users/aabdulla/CLionProjects/avm/Stack.class.cpp" "/Users/aabdulla/CLionProjects/avm/cmake-build-debug/CMakeFiles/avm.dir/Stack.class.cpp.o"
-  "/Users/aabdulla/CLionProjects/avm/Stack.cpp" "/Users/aabdulla/CLionProjects/avm/cmake-build-debug/CMakeFiles/avm.dir/Stack.cpp.o"
-  "/Users/aabdulla/CLionProjects/avm/main.cpp" "/Users/aabdulla/CLionProjects/avm/cmake-build-debug/CMakeFiles/avm.dir/main.cpp.o"
+  "/Users/ayonaabdullaieva/CLionProjects/avm/OperandsFactory.cpp" "/Users/ayonaabdullaieva/CLionProjects/avm/cmake-build-debug/CMakeFiles/avm.dir/OperandsFactory.cpp.o"
+  "/Users/ayonaabdullaieva/CLionProjects/avm/Parser.cpp" "/Users/ayonaabdullaieva/CLionProjects/avm/cmake-build-debug/CMakeFiles/avm.dir/Parser.cpp.o"
+  "/Users/ayonaabdullaieva/CLionProjects/avm/Stack.cpp" "/Users/ayonaabdullaieva/CLionProjects/avm/cmake-build-debug/CMakeFiles/avm.dir/Stack.cpp.o"
+  "/Users/ayonaabdullaieva/CLionProjects/avm/main.cpp" "/Users/ayonaabdullaieva/CLionProjects/avm/cmake-build-debug/CMakeFiles/avm.dir/main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "AppleClang")
 
