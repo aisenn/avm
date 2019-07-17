@@ -13,12 +13,12 @@ class Stack : public std::stack<IOperand>
 {
 public:
 	Stack() {}
-	Stack(Stack const &cp) {
+	/*Stack(Stack const &cp) {
 		*this = cp;
-	}
+	}*/
 	~Stack() {}
 
-	Stack &operator=(Stack const &rhs) {
+/*	Stack &operator=(Stack const &rhs) {
 		if (this != &rhs)
 			this->c = rhs.c;
 		return *this;
@@ -31,7 +31,7 @@ public:
 	}
 	iterator end() {
 		return this->c.end();
-	}
+	}*/
 
 	/*void push(const IOperand *op) {
 		this->emplace(op);

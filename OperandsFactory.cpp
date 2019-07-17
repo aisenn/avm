@@ -2,9 +2,9 @@
 #include "Operand.hpp"
 #include "iostream" //
 
-//https://stackoverflow.com/questions/199333/how-do-i-detect-unsigned-integer-multiply-overflow?page=1&tab=votes#tab-top
-//https://gcc.gnu.org/onlinedocs/gcc/Integer-Overflow-Builtins.html
-//https://github.com/hseos/hseos-course/blob/master/2018/03-integers/README.md
+//TODO: https://stackoverflow.com/questions/199333/how-do-i-detect-unsigned-integer-multiply-overflow?page=1&tab=votes#tab-top
+// https://gcc.gnu.org/onlinedocs/gcc/Integer-Overflow-Builtins.html
+// https://github.com/hseos/hseos-course/blob/master/2018/03-integers/README.md
 
 OperandsFactory::fnPtr OperandsFactory::method[] = {
 		&OperandsFactory::createInt8,
@@ -13,33 +13,6 @@ OperandsFactory::fnPtr OperandsFactory::method[] = {
 		&OperandsFactory::createFloat,
 		&OperandsFactory::createDouble
 };
-
-/*OperandsFactory::mem_t OperandsFactory::mm[] = {
-		&OperandsFactory::createInt8,
-		&OperandsFactory::createInt16,
-		&OperandsFactory::createInt32,
-		&OperandsFactory::createFloat,
-		&OperandsFactory::createDouble
-};
-
-OperandsFactory::arr OperandsFactory::m[] = {
-		&OperandsFactory::createInt8,
-		&OperandsFactory::createInt16,
-		&OperandsFactory::createInt32,
-		&OperandsFactory::createFloat,
-		&OperandsFactory::createDouble
-		//'const IOperand *(OperandsFactory::*)(const std::string &) const'
-		//'OperandsFactory::arr' (aka 'vector<std::function<const IOperand *(OperandsFactory::*)(const std::string &) const> >')
-};
-
-const IOperand *(OperandsFactory::*fnPtr[])(const std::string &) const = {
-		&OperandsFactory::createInt8,
-		&OperandsFactory::createInt16,
-		&OperandsFactory::createInt32,
-		&OperandsFactory::createFloat,
-		&OperandsFactory::createDouble
-};*/
-
 
 OperandsFactory::OperandsFactory() {}
 
@@ -91,7 +64,7 @@ int main() {
 }*/
 
 IOperand const *OperandsFactory::createInt8( std::string const & value ) const {
-	int64_t i;
+	/*int64_t i;
 
 	try
 	{
@@ -107,7 +80,8 @@ IOperand const *OperandsFactory::createInt8( std::string const & value ) const {
 		std::cout << "Integer overflow: std::out_of_range thrown" << '\n';
 	}
 
-	return new Operand<int8_t>(i);
+	return new Operand<int8_t>(i);*/
+	return new Operand<int8_t>(std::stod(value));
 }
 
 IOperand const *OperandsFactory::createInt16( std::string const & value ) const {

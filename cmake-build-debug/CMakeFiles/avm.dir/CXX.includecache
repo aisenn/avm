@@ -6,43 +6,23 @@
 
 #IncludeRegexTransform: 
 
-/Users/ayonaabdullaieva/CLionProjects/avm/IOperand.hpp
+/Users/aabdulla/CLionProjects/avm/IOperand.hpp
 string
 -
 
-/Users/ayonaabdullaieva/CLionProjects/avm/OperandsFactory.hpp
-IOperand.hpp
-/Users/ayonaabdullaieva/CLionProjects/avm/IOperand.hpp
-vector
--
-functional
--
-
-/Users/ayonaabdullaieva/CLionProjects/avm/Stack.cpp
-Stack.hpp
-/Users/ayonaabdullaieva/CLionProjects/avm/Stack.hpp
-
-/Users/ayonaabdullaieva/CLionProjects/avm/Stack.hpp
-iostream
--
-stack
--
-iterator
--
-IOperand.hpp
-/Users/ayonaabdullaieva/CLionProjects/avm/IOperand.hpp
+/Users/aabdulla/CLionProjects/avm/Operand.cpp
+Operand.hpp
+/Users/aabdulla/CLionProjects/avm/Operand.hpp
 OperandsFactory.hpp
-/Users/ayonaabdullaieva/CLionProjects/avm/OperandsFactory.hpp
-OperandsFactory.hpp
-/Users/ayonaabdullaieva/CLionProjects/avm/OperandsFactory.hpp
+/Users/aabdulla/CLionProjects/avm/OperandsFactory.hpp
 
-/Users/ayonaabdullaieva/CLionProjects/avm/main.cpp
-iostream
--
-string
--
+/Users/aabdulla/CLionProjects/avm/Operand.hpp
+IOperand.hpp
+/Users/aabdulla/CLionProjects/avm/IOperand.hpp
 sstream
 -
-Stack.hpp
-/Users/ayonaabdullaieva/CLionProjects/avm/Stack.hpp
+
+/Users/aabdulla/CLionProjects/avm/OperandsFactory.hpp
+IOperand.hpp
+/Users/aabdulla/CLionProjects/avm/IOperand.hpp
 

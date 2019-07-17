@@ -8,104 +8,117 @@
 		<Option virtualFolders="CMake Files\;"/>
 		<Build>
 			<Target title="all">
-				<Option working_dir="/Users/ayonaabdullaieva/CLionProjects/avm/cmake-build-debug"/>
+				<Option working_dir="/Users/aabdulla/CLionProjects/avm/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/Users/ayonaabdullaieva/CLionProjects/avm/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/ayonaabdullaieva/CLionProjects/avm/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/Users/ayonaabdullaieva/CLionProjects/avm/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/ayonaabdullaieva/CLionProjects/avm/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/aabdulla/CLionProjects/avm/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/aabdulla/CLionProjects/avm/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/aabdulla/CLionProjects/avm/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/aabdulla/CLionProjects/avm/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
-				<Option working_dir="/Users/ayonaabdullaieva/CLionProjects/avm/cmake-build-debug"/>
+				<Option working_dir="/Users/aabdulla/CLionProjects/avm/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/Users/ayonaabdullaieva/CLionProjects/avm/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/ayonaabdullaieva/CLionProjects/avm/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/Users/ayonaabdullaieva/CLionProjects/avm/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/ayonaabdullaieva/CLionProjects/avm/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/aabdulla/CLionProjects/avm/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/aabdulla/CLionProjects/avm/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/aabdulla/CLionProjects/avm/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/aabdulla/CLionProjects/avm/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="edit_cache">
-				<Option working_dir="/Users/ayonaabdullaieva/CLionProjects/avm/cmake-build-debug"/>
+				<Option working_dir="/Users/aabdulla/CLionProjects/avm/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/Users/ayonaabdullaieva/CLionProjects/avm/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/ayonaabdullaieva/CLionProjects/avm/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/Users/ayonaabdullaieva/CLionProjects/avm/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/ayonaabdullaieva/CLionProjects/avm/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/aabdulla/CLionProjects/avm/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/aabdulla/CLionProjects/avm/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/aabdulla/CLionProjects/avm/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/aabdulla/CLionProjects/avm/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="avm">
-				<Option output="/Users/ayonaabdullaieva/CLionProjects/avm/cmake-build-debug/avm" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/Users/ayonaabdullaieva/CLionProjects/avm/cmake-build-debug"/>
+				<Option output="/Users/aabdulla/CLionProjects/avm/cmake-build-debug/avm" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/aabdulla/CLionProjects/avm/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/Library/Developer/CommandLineTools/usr/include/c++/v1"/>
-					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/10.0.1/include"/>
-					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/9.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/usr/include"/>
 					<Add directory="/System/Library/Frameworks"/>
 					<Add directory="/Library/Frameworks"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/Users/ayonaabdullaieva/CLionProjects/avm/cmake-build-debug/Makefile&quot;  VERBOSE=1 avm"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/ayonaabdullaieva/CLionProjects/avm/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/Users/ayonaabdullaieva/CLionProjects/avm/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/ayonaabdullaieva/CLionProjects/avm/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/aabdulla/CLionProjects/avm/cmake-build-debug/Makefile&quot;  VERBOSE=1 avm"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/aabdulla/CLionProjects/avm/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/aabdulla/CLionProjects/avm/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/aabdulla/CLionProjects/avm/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="avm/fast">
-				<Option output="/Users/ayonaabdullaieva/CLionProjects/avm/cmake-build-debug/avm" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/Users/ayonaabdullaieva/CLionProjects/avm/cmake-build-debug"/>
+				<Option output="/Users/aabdulla/CLionProjects/avm/cmake-build-debug/avm" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/aabdulla/CLionProjects/avm/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/Library/Developer/CommandLineTools/usr/include/c++/v1"/>
-					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/10.0.1/include"/>
-					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/9.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/usr/include"/>
 					<Add directory="/System/Library/Frameworks"/>
 					<Add directory="/Library/Frameworks"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/Users/ayonaabdullaieva/CLionProjects/avm/cmake-build-debug/Makefile&quot;  VERBOSE=1 avm/fast"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/ayonaabdullaieva/CLionProjects/avm/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/Users/ayonaabdullaieva/CLionProjects/avm/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/ayonaabdullaieva/CLionProjects/avm/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/aabdulla/CLionProjects/avm/cmake-build-debug/Makefile&quot;  VERBOSE=1 avm/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/aabdulla/CLionProjects/avm/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/aabdulla/CLionProjects/avm/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/aabdulla/CLionProjects/avm/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/Users/ayonaabdullaieva/CLionProjects/avm/IOperand.hpp">
+		<Unit filename="/Users/aabdulla/CLionProjects/avm/IOperand.hpp">
 			<Option target="avm"/>
 		</Unit>
-		<Unit filename="/Users/ayonaabdullaieva/CLionProjects/avm/Operand.hpp">
+		<Unit filename="/Users/aabdulla/CLionProjects/avm/Operand.cpp">
 			<Option target="avm"/>
 		</Unit>
-		<Unit filename="/Users/ayonaabdullaieva/CLionProjects/avm/OperandsFactory.cpp">
+		<Unit filename="/Users/aabdulla/CLionProjects/avm/Operand.hpp">
 			<Option target="avm"/>
 		</Unit>
-		<Unit filename="/Users/ayonaabdullaieva/CLionProjects/avm/OperandsFactory.hpp">
+		<Unit filename="/Users/aabdulla/CLionProjects/avm/OperandsFactory.cpp">
 			<Option target="avm"/>
 		</Unit>
-		<Unit filename="/Users/ayonaabdullaieva/CLionProjects/avm/Parser.cpp">
+		<Unit filename="/Users/aabdulla/CLionProjects/avm/OperandsFactory.hpp">
 			<Option target="avm"/>
 		</Unit>
-		<Unit filename="/Users/ayonaabdullaieva/CLionProjects/avm/Parser.hpp">
+		<Unit filename="/Users/aabdulla/CLionProjects/avm/Parser.cpp">
 			<Option target="avm"/>
 		</Unit>
-		<Unit filename="/Users/ayonaabdullaieva/CLionProjects/avm/Stack.cpp">
+		<Unit filename="/Users/aabdulla/CLionProjects/avm/Parser.hpp">
 			<Option target="avm"/>
 		</Unit>
-		<Unit filename="/Users/ayonaabdullaieva/CLionProjects/avm/Stack.hpp">
+		<Unit filename="/Users/aabdulla/CLionProjects/avm/Stack.cpp">
 			<Option target="avm"/>
 		</Unit>
-		<Unit filename="/Users/ayonaabdullaieva/CLionProjects/avm/main.cpp">
+		<Unit filename="/Users/aabdulla/CLionProjects/avm/Stack.hpp">
 			<Option target="avm"/>
 		</Unit>
-		<Unit filename="/Users/ayonaabdullaieva/CLionProjects/avm/CMakeLists.txt">
+		<Unit filename="/Users/aabdulla/CLionProjects/avm/avExceptions.cpp">
+			<Option target="avm"/>
+		</Unit>
+		<Unit filename="/Users/aabdulla/CLionProjects/avm/avExceptions.hpp">
+			<Option target="avm"/>
+		</Unit>
+		<Unit filename="/Users/aabdulla/CLionProjects/avm/main.cpp">
+			<Option target="avm"/>
+		</Unit>
+		<Unit filename="/Users/aabdulla/CLionProjects/avm/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
 	</Project>
