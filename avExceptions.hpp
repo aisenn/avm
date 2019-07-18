@@ -5,9 +5,11 @@
 #include <stdexcept>
 #include <functional>
 //TODO: try to inherit just form <exception>
+// https://en.cppreference.com/w/cpp/error/exception
 
 class avExceptions {
 
+public:
 	class DivideByZero : public std::overflow_error { char const * what( void ) const _NOEXCEPT; };
 	class PopOnEmptyStack : public std::exception { char const * what( void ) const _NOEXCEPT; };
 	class PrintOnEmptyStack : public std::exception { char const * what( void ) const _NOEXCEPT; };

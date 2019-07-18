@@ -6,6 +6,8 @@
 // https://gcc.gnu.org/onlinedocs/gcc/Integer-Overflow-Builtins.html
 // https://github.com/hseos/hseos-course/blob/master/2018/03-integers/README.md
 
+//TODO: invalid value or over/undeflow while initialisation
+
 OperandsFactory::fnPtr OperandsFactory::method[] = {
 		&OperandsFactory::createInt8,
 		&OperandsFactory::createInt16,

@@ -31,15 +31,15 @@ int main () {
 //	Stack s;
 
 
-//	OperandsFactory & a = OperandsFactory::instance();
-	Operand<size_t > e(42);
-
 	Operand<int8_t > w(59);
 	Operand<float > q(1.123);
-	w + q;
+
+
 	const IOperand *a = OperandsFactory::instance().createOperand(INT8, "127");
 	const IOperand *b = OperandsFactory::instance().createOperand(INT8, "128");
 
+	w.getType();
+	w + q;
 	a = b + 100;
 /*	s.push("1");
 	s.push("2");

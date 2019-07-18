@@ -5,11 +5,13 @@ CMakeFiles/avm.dir/Operand.cpp.o: ../IOperand.hpp
 CMakeFiles/avm.dir/Operand.cpp.o: ../Operand.cpp
 CMakeFiles/avm.dir/Operand.cpp.o: ../Operand.hpp
 CMakeFiles/avm.dir/Operand.cpp.o: ../OperandsFactory.hpp
+CMakeFiles/avm.dir/Operand.cpp.o: ../avExceptions.hpp
 
 CMakeFiles/avm.dir/OperandsFactory.cpp.o: ../IOperand.hpp
 CMakeFiles/avm.dir/OperandsFactory.cpp.o: ../Operand.hpp
 CMakeFiles/avm.dir/OperandsFactory.cpp.o: ../OperandsFactory.cpp
 CMakeFiles/avm.dir/OperandsFactory.cpp.o: ../OperandsFactory.hpp
+CMakeFiles/avm.dir/OperandsFactory.cpp.o: ../avExceptions.hpp
 
 CMakeFiles/avm.dir/Parser.cpp.o: ../Parser.cpp
 CMakeFiles/avm.dir/Parser.cpp.o: ../Parser.hpp
@@ -27,5 +29,6 @@ CMakeFiles/avm.dir/main.cpp.o: ../Operand.hpp
 CMakeFiles/avm.dir/main.cpp.o: ../OperandsFactory.hpp
 CMakeFiles/avm.dir/main.cpp.o: ../Parser.hpp
 CMakeFiles/avm.dir/main.cpp.o: ../Stack.hpp
+CMakeFiles/avm.dir/main.cpp.o: ../avExceptions.hpp
 CMakeFiles/avm.dir/main.cpp.o: ../main.cpp
 
