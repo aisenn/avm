@@ -6,6 +6,16 @@
 
 #IncludeRegexTransform: 
 
+/Users/aabdulla/CLionProjects/avm/AvmExceptions.hpp
+string
+-
+exception
+-
+stdexcept
+-
+functional
+-
+
 /Users/aabdulla/CLionProjects/avm/IOperand.hpp
 string
 -
@@ -15,8 +25,8 @@ IOperand.hpp
 /Users/aabdulla/CLionProjects/avm/IOperand.hpp
 sstream
 -
-avExceptions.hpp
-/Users/aabdulla/CLionProjects/avm/avExceptions.hpp
+AvmExceptions.hpp
+/Users/aabdulla/CLionProjects/avm/AvmExceptions.hpp
 
 /Users/aabdulla/CLionProjects/avm/OperandsFactory.hpp
 IOperand.hpp
@@ -37,14 +47,6 @@ OperandsFactory.hpp
 /Users/aabdulla/CLionProjects/avm/OperandsFactory.hpp
 OperandsFactory.hpp
 /Users/aabdulla/CLionProjects/avm/OperandsFactory.hpp
-
-/Users/aabdulla/CLionProjects/avm/avExceptions.hpp
-exception
--
-stdexcept
--
-functional
--
 
 /Users/aabdulla/CLionProjects/avm/main.cpp
 iostream

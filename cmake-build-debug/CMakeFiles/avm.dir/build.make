@@ -122,18 +122,18 @@ CMakeFiles/avm.dir/Operand.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/avm.dir/Operand.cpp.s"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/aabdulla/CLionProjects/avm/Operand.cpp -o CMakeFiles/avm.dir/Operand.cpp.s
 
-CMakeFiles/avm.dir/avExceptions.cpp.o: CMakeFiles/avm.dir/flags.make
-CMakeFiles/avm.dir/avExceptions.cpp.o: ../avExceptions.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/aabdulla/CLionProjects/avm/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/avm.dir/avExceptions.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/avm.dir/avExceptions.cpp.o -c /Users/aabdulla/CLionProjects/avm/avExceptions.cpp
+CMakeFiles/avm.dir/AvmExceptions.cpp.o: CMakeFiles/avm.dir/flags.make
+CMakeFiles/avm.dir/AvmExceptions.cpp.o: ../AvmExceptions.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/aabdulla/CLionProjects/avm/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/avm.dir/AvmExceptions.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/avm.dir/AvmExceptions.cpp.o -c /Users/aabdulla/CLionProjects/avm/AvmExceptions.cpp
 
-CMakeFiles/avm.dir/avExceptions.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/avm.dir/avExceptions.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/aabdulla/CLionProjects/avm/avExceptions.cpp > CMakeFiles/avm.dir/avExceptions.cpp.i
+CMakeFiles/avm.dir/AvmExceptions.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/avm.dir/AvmExceptions.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/aabdulla/CLionProjects/avm/AvmExceptions.cpp > CMakeFiles/avm.dir/AvmExceptions.cpp.i
 
-CMakeFiles/avm.dir/avExceptions.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/avm.dir/avExceptions.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/aabdulla/CLionProjects/avm/avExceptions.cpp -o CMakeFiles/avm.dir/avExceptions.cpp.s
+CMakeFiles/avm.dir/AvmExceptions.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/avm.dir/AvmExceptions.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/aabdulla/CLionProjects/avm/AvmExceptions.cpp -o CMakeFiles/avm.dir/AvmExceptions.cpp.s
 
 # Object files for target avm
 avm_OBJECTS = \
@@ -142,7 +142,7 @@ avm_OBJECTS = \
 "CMakeFiles/avm.dir/Stack.cpp.o" \
 "CMakeFiles/avm.dir/Parser.cpp.o" \
 "CMakeFiles/avm.dir/Operand.cpp.o" \
-"CMakeFiles/avm.dir/avExceptions.cpp.o"
+"CMakeFiles/avm.dir/AvmExceptions.cpp.o"
 
 # External object files for target avm
 avm_EXTERNAL_OBJECTS =
@@ -152,7 +152,7 @@ avm: CMakeFiles/avm.dir/OperandsFactory.cpp.o
 avm: CMakeFiles/avm.dir/Stack.cpp.o
 avm: CMakeFiles/avm.dir/Parser.cpp.o
 avm: CMakeFiles/avm.dir/Operand.cpp.o
-avm: CMakeFiles/avm.dir/avExceptions.cpp.o
+avm: CMakeFiles/avm.dir/AvmExceptions.cpp.o
 avm: CMakeFiles/avm.dir/build.make
 avm: CMakeFiles/avm.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/aabdulla/CLionProjects/avm/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable avm"

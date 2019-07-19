@@ -4,7 +4,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/avm.dir/Stack.cpp.o"
   "CMakeFiles/avm.dir/Parser.cpp.o"
   "CMakeFiles/avm.dir/Operand.cpp.o"
-  "CMakeFiles/avm.dir/avExceptions.cpp.o"
+  "CMakeFiles/avm.dir/AvmExceptions.cpp.o"
   "avm.pdb"
   "avm"
 )

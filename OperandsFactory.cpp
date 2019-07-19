@@ -2,6 +2,8 @@
 #include "Operand.hpp"
 #include "iostream" //
 
+#include "AvmExceptions.hpp"
+
 //TODO: https://stackoverflow.com/questions/199333/how-do-i-detect-unsigned-integer-multiply-overflow?page=1&tab=votes#tab-top
 // https://gcc.gnu.org/onlinedocs/gcc/Integer-Overflow-Builtins.html
 // https://github.com/hseos/hseos-course/blob/master/2018/03-integers/README.md
@@ -65,41 +67,81 @@ int main() {
 	return 0;
 }*/
 
-IOperand const *OperandsFactory::createInt8( std::string const & value ) const {
-	/*int64_t i;
+/*
+template <typename T>
+T toNum(std::string const & value) { return std::stoll(value); }
+template < >
+double toNum<double >(std::string const & value) { return std::stold(value); }
+template < >
+float toNum<float >(std::string const & value) { return std::stold(value); }*/
 
+// TODO: something better
+template <typename T> std::string type()	{ return "Undefined"; }
+template <> std::string type<int8_t >()		{ return "int8_t";	}
+template <> std::string type<int16_t >()	{ return "int16_t";	}
+template <> std::string type<int32_t >()	{ return "int32_t";	}
+template <> std::string type<float >()		{ return "float";	}
+template <> std::string type<double >()		{ return "double";	}
+
+template <typename T>
+T operandSizeCheck(std::string const & value) {
 	try
 	{
-		i = std::stoi(value);
-		std::cout << i << '\n';
+		int64_t val = std::stoll(value);
+		if (val > std::numeric_limits<T>::max())
+			throw AvmExceptions::Overflow(type<T>());
+		else if (val < std::numeric_limits<T>::min())
+			throw AvmExceptions::Underflow(type<T>());
+		return val;
 	}
-	catch (std::invalid_argument const &e)
+	catch(const std::exception& e)
 	{
-		std::cout << "Bad input: std::invalid_argument thrown" << '\n';
+		std::string msg = value + " is out of " + type<T>() + " range";
+		throw AvmExceptions::OperandSizeException(msg.data());
 	}
-	catch (std::out_of_range const &e)
-	{
-		std::cout << "Integer overflow: std::out_of_range thrown" << '\n';
-	}
+}
+// TODO: END something better
 
-	return new Operand<int8_t>(i);*/
-	return new Operand<int8_t>(std::stod(value));
+
+IOperand const *OperandsFactory::createInt8( std::string const & value ) const {
+	int64_t val = operandSizeCheck<int8_t>(value);
+	return new Operand<int8_t>(val);
 }
 
 IOperand const *OperandsFactory::createInt16( std::string const & value ) const {
-	return new Operand<int16_t>(std::stod(value));
+	int64_t val = operandSizeCheck<int16_t>(value);
+	return new Operand<int16_t>(val);
 }
 
 IOperand const *OperandsFactory::createInt32( std::string const & value ) const {
-	return new Operand<int32_t>(std::stod(value));
+	int64_t val = operandSizeCheck<int32_t>(value);
+	return new Operand<int32_t>(val);
 }
 
+// TODO: thow stof, stod exception
+
 IOperand const *OperandsFactory::createFloat( std::string const & value ) const {
-	return new Operand<float>(std::stod(value));
+	try {
+		float val = std::stof(value);
+		return new Operand<float>(val);
+	}
+	catch(const std::exception &e)
+	{
+		std::string msg = value + " is out of " + type<float>() + " range";
+		throw AvmExceptions::OperandSizeException(msg.data());
+	}
 }
 
 IOperand const *OperandsFactory::createDouble( std::string const & value ) const {
-	return new Operand<double>(std::stod(value));
+	try {
+		double val = std::stod(value);
+		return new Operand<double>(val);
+	}
+	catch(const std::exception &e)
+	{
+		std::string msg = value + " is out of " + type<double>() + " range";
+		throw AvmExceptions::OperandSizeException(msg.data());
+	}
 }
 
 IOperand const *OperandsFactory::createOperand( eOperandType type, std::string const & value ) const {

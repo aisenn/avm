@@ -35,12 +35,20 @@ int main () {
 	Operand<float > q(1.123);
 
 
-	const IOperand *a = OperandsFactory::instance().createOperand(INT8, "127");
-	const IOperand *b = OperandsFactory::instance().createOperand(INT8, "128");
+	try {
+		const IOperand *a = OperandsFactory::instance().createOperand(INT8, "127");
+		std::string num = "340282346638528859811704183484516925440.000000";
+		const IOperand *b = OperandsFactory::instance().createOperand(FLOAT, num);
 
-	w.getType();
-	w + q;
-	a = b + 100;
+		w.getType();
+		w + q;
+		a = b + 100;
+	}
+	catch (std::exception &e) {
+		std::cout << e.what() << std::endl;
+	}
+
+
 /*	s.push("1");
 	s.push("2");
 	s.push("3");*/

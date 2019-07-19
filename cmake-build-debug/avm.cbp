@@ -82,6 +82,12 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/Users/aabdulla/CLionProjects/avm/AvmExceptions.cpp">
+			<Option target="avm"/>
+		</Unit>
+		<Unit filename="/Users/aabdulla/CLionProjects/avm/AvmExceptions.hpp">
+			<Option target="avm"/>
+		</Unit>
 		<Unit filename="/Users/aabdulla/CLionProjects/avm/IOperand.hpp">
 			<Option target="avm"/>
 		</Unit>
@@ -107,12 +113,6 @@
 			<Option target="avm"/>
 		</Unit>
 		<Unit filename="/Users/aabdulla/CLionProjects/avm/Stack.hpp">
-			<Option target="avm"/>
-		</Unit>
-		<Unit filename="/Users/aabdulla/CLionProjects/avm/avExceptions.cpp">
-			<Option target="avm"/>
-		</Unit>
-		<Unit filename="/Users/aabdulla/CLionProjects/avm/avExceptions.hpp">
 			<Option target="avm"/>
 		</Unit>
 		<Unit filename="/Users/aabdulla/CLionProjects/avm/main.cpp">

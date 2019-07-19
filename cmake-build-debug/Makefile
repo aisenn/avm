@@ -123,6 +123,33 @@ avm/fast:
 	$(MAKE) -f CMakeFiles/avm.dir/build.make CMakeFiles/avm.dir/build
 .PHONY : avm/fast
 
+AvmExceptions.o: AvmExceptions.cpp.o
+
+.PHONY : AvmExceptions.o
+
+# target to build an object file
+AvmExceptions.cpp.o:
+	$(MAKE) -f CMakeFiles/avm.dir/build.make CMakeFiles/avm.dir/AvmExceptions.cpp.o
+.PHONY : AvmExceptions.cpp.o
+
+AvmExceptions.i: AvmExceptions.cpp.i
+
+.PHONY : AvmExceptions.i
+
+# target to preprocess a source file
+AvmExceptions.cpp.i:
+	$(MAKE) -f CMakeFiles/avm.dir/build.make CMakeFiles/avm.dir/AvmExceptions.cpp.i
+.PHONY : AvmExceptions.cpp.i
+
+AvmExceptions.s: AvmExceptions.cpp.s
+
+.PHONY : AvmExceptions.s
+
+# target to generate assembly for a file
+AvmExceptions.cpp.s:
+	$(MAKE) -f CMakeFiles/avm.dir/build.make CMakeFiles/avm.dir/AvmExceptions.cpp.s
+.PHONY : AvmExceptions.cpp.s
+
 Operand.o: Operand.cpp.o
 
 .PHONY : Operand.o
@@ -231,33 +258,6 @@ Stack.cpp.s:
 	$(MAKE) -f CMakeFiles/avm.dir/build.make CMakeFiles/avm.dir/Stack.cpp.s
 .PHONY : Stack.cpp.s
 
-avExceptions.o: avExceptions.cpp.o
-
-.PHONY : avExceptions.o
-
-# target to build an object file
-avExceptions.cpp.o:
-	$(MAKE) -f CMakeFiles/avm.dir/build.make CMakeFiles/avm.dir/avExceptions.cpp.o
-.PHONY : avExceptions.cpp.o
-
-avExceptions.i: avExceptions.cpp.i
-
-.PHONY : avExceptions.i
-
-# target to preprocess a source file
-avExceptions.cpp.i:
-	$(MAKE) -f CMakeFiles/avm.dir/build.make CMakeFiles/avm.dir/avExceptions.cpp.i
-.PHONY : avExceptions.cpp.i
-
-avExceptions.s: avExceptions.cpp.s
-
-.PHONY : avExceptions.s
-
-# target to generate assembly for a file
-avExceptions.cpp.s:
-	$(MAKE) -f CMakeFiles/avm.dir/build.make CMakeFiles/avm.dir/avExceptions.cpp.s
-.PHONY : avExceptions.cpp.s
-
 main.o: main.cpp.o
 
 .PHONY : main.o
@@ -294,6 +294,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... avm"
+	@echo "... AvmExceptions.o"
+	@echo "... AvmExceptions.i"
+	@echo "... AvmExceptions.s"
 	@echo "... Operand.o"
 	@echo "... Operand.i"
 	@echo "... Operand.s"
@@ -306,9 +309,6 @@ help:
 	@echo "... Stack.o"
 	@echo "... Stack.i"
 	@echo "... Stack.s"
-	@echo "... avExceptions.o"
-	@echo "... avExceptions.i"
-	@echo "... avExceptions.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

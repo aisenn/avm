@@ -37,8 +37,6 @@ public:
 
 		return instance;
 	}
-
-
 };
 
 #endif //OPERANDSFACTORY_HPP

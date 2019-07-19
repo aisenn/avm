@@ -3,7 +3,7 @@
 
 #include "IOperand.hpp"
 #include <sstream> //
-#include "avExceptions.hpp"
+#include "AvmExceptions.hpp"
 
 //TODO: https://en.wikibooks.org/wiki/C_Programming/stdint.h
 
@@ -53,12 +53,12 @@ private:
 	T _value;
 	std::string _strValue;
 	Operand() {
-		throw(avExceptions::InvalidValue());
+		throw(AvmExceptions::InvalidValue());
 	}
 
 public:
 	Operand(T value) {
-		throw(avExceptions::InvalidValue());
+		throw(AvmExceptions::InvalidValue());
 	}
 	Operand(Operand const & cp);
 
@@ -69,7 +69,7 @@ public:
 	}
 
 	eOperandType getType() const override {
-		throw(avExceptions::InvalidValue());
+		throw(AvmExceptions::InvalidValue());
 	}
 
 	virtual IOperand const * operator+( IOperand const & rhs ) const override;
