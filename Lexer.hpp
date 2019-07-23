@@ -3,6 +3,7 @@
 
 #include "IOperand.hpp"
 #include "string"//
+#include <vector>
 
 enum eInstructions {
 	push,
@@ -39,6 +40,7 @@ public:
 	Lexer &operator=(Lexer const &) = delete;
 
 	static Lexer &instance();
+	std::vector<cmd> cmdStack;//or just send a token
 };
 
 
