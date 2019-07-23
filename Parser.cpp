@@ -1,11 +1,22 @@
 #include "Parser.hpp"
 
 //TODO https://github.com/brhamidi/abstract-vm/blob/master/Lexer.cpp
+//TODO: could I use = default??
 
-void commandLineInput() {
+Parser::Parser() {}
+Parser::~Parser() {}
+
+void Parser::commandLineInput() {
 
 }
 
-void fileInput(const char *fileName) {
+void Parser::fileInput(const char *fileName) {
 
 }
+
+Parser &Parser::instance() {
+	static Parser instance;
+	return instance;
+}
+
+

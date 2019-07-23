@@ -87,6 +87,12 @@
 		<Unit filename="/Users/ayonaabdullaieva/CLionProjects/avm/IOperand.hpp">
 			<Option target="avm"/>
 		</Unit>
+		<Unit filename="/Users/ayonaabdullaieva/CLionProjects/avm/Lexer.cpp">
+			<Option target="avm"/>
+		</Unit>
+		<Unit filename="/Users/ayonaabdullaieva/CLionProjects/avm/Lexer.hpp">
+			<Option target="avm"/>
+		</Unit>
 		<Unit filename="/Users/ayonaabdullaieva/CLionProjects/avm/Operand.cpp">
 			<Option target="avm"/>
 		</Unit>

@@ -34,11 +34,7 @@ public:
 
 	IOperand const *createOperand( eOperandType type, std::string const & value ) const;
 
-	static OperandsFactory &instance() {
-		static OperandsFactory instance;
-
-		return instance;
-	}
+	static OperandsFactory &instance();
 };
 
 #endif //OPERANDSFACTORY_HPP

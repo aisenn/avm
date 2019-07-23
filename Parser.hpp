@@ -4,15 +4,17 @@
 
 class Parser {
 private:
-	Parser() {}
+	Parser();
+	~Parser();
 
 public:
 	Parser &operator=(Parser const &) = delete;
 	Parser(Parser const &) = delete;
 
-	void readFromCommandLine();
-	void readFromFile(const char *fileName);
+	void commandLineInput();
+	void fileInput(const char *fileName);
 
+	static Parser &instance();
 };
 
 

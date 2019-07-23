@@ -74,7 +74,6 @@ T operandSizeCheck(std::string const & value) {
 }
 // TODO: END something better
 
-
 IOperand const *OperandsFactory::createInt8( std::string const & value ) const {
 	int64_t val = operandSizeCheck<int8_t>(value);
 	return new Operand<int8_t>(static_cast<int8_t >(val));
@@ -106,4 +105,9 @@ IOperand const *OperandsFactory::createOperand( eOperandType type, std::string c
 	if (type < INT8 || type > DOUBLE)
 		throw AvmExceptions::BadFunction();
 	return (this->*(method[type]))(value);
+}
+
+OperandsFactory &OperandsFactory::instance() {
+	static OperandsFactory instance;
+	return instance;
 }
