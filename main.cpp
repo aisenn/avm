@@ -34,11 +34,9 @@ int main () {
 	Operand<int8_t > w(59);
 	Operand<float > q(1.123);
 
-
 	try {
 		const IOperand *a = OperandsFactory::instance().createOperand(INT8, "127");
-		std::string num = "340282346638528859811704183484516925440.000000";
-		const IOperand *b = OperandsFactory::instance().createOperand(FLOAT, num);
+		const IOperand *b = OperandsFactory::instance().createOperand(FLOAT, "123");
 
 		w.getType();
 		w + q;

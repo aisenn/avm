@@ -10,11 +10,13 @@
 //# define  FACTORY(type, val) OperandsFactory::instance().createOperand( type, value )
 
 
-
 class OperandsFactory {
 private:
 	typedef IOperand const* (OperandsFactory::*fnPtr)(std::string const& value) const;
 	static fnPtr method[];
+
+
+//	typedef std::map<eOperandType, IOperand const* (OperandsFactory::*)(std::string const & value) const>	create;
 
 	OperandsFactory();
 

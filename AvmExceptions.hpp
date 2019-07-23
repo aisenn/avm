@@ -17,8 +17,6 @@ public:
 	class InvalidValue : public std::exception { char const * what( void ) const _NOEXCEPT; };
 
 
-
-
 	class BadFunction : public std::bad_function_call { char const * what( void ) const _NOEXCEPT; };
 
 	class Overflow : public std::overflow_error {
@@ -34,9 +32,9 @@ public:
 		char const * what( void ) const _NOEXCEPT;
 	};
 
-	class OperandSizeException : public std::out_of_range {
+	class OutOfRange : public std::out_of_range {
 	public:
-		OperandSizeException(const std::string &s);
+		OutOfRange(const std::string &s);
 	};
 };
 

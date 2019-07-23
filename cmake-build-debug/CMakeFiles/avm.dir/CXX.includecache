@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/Users/aabdulla/CLionProjects/avm/AvmExceptions.hpp
+/Users/ayonaabdullaieva/CLionProjects/avm/AvmExceptions.hpp
 string
 -
 exception
@@ -16,25 +16,25 @@ stdexcept
 functional
 -
 
-/Users/aabdulla/CLionProjects/avm/IOperand.hpp
+/Users/ayonaabdullaieva/CLionProjects/avm/IOperand.hpp
 string
 -
 
-/Users/aabdulla/CLionProjects/avm/Operand.hpp
+/Users/ayonaabdullaieva/CLionProjects/avm/Operand.hpp
 IOperand.hpp
-/Users/aabdulla/CLionProjects/avm/IOperand.hpp
+/Users/ayonaabdullaieva/CLionProjects/avm/IOperand.hpp
 sstream
 -
 AvmExceptions.hpp
-/Users/aabdulla/CLionProjects/avm/AvmExceptions.hpp
+/Users/ayonaabdullaieva/CLionProjects/avm/AvmExceptions.hpp
 
-/Users/aabdulla/CLionProjects/avm/OperandsFactory.hpp
+/Users/ayonaabdullaieva/CLionProjects/avm/OperandsFactory.hpp
 IOperand.hpp
-/Users/aabdulla/CLionProjects/avm/IOperand.hpp
+/Users/ayonaabdullaieva/CLionProjects/avm/IOperand.hpp
 
-/Users/aabdulla/CLionProjects/avm/Parser.hpp
+/Users/ayonaabdullaieva/CLionProjects/avm/Parser.hpp
 
-/Users/aabdulla/CLionProjects/avm/Stack.hpp
+/Users/ayonaabdullaieva/CLionProjects/avm/Stack.hpp
 iostream
 -
 stack
@@ -42,13 +42,13 @@ stack
 iterator
 -
 IOperand.hpp
-/Users/aabdulla/CLionProjects/avm/IOperand.hpp
+/Users/ayonaabdullaieva/CLionProjects/avm/IOperand.hpp
 OperandsFactory.hpp
-/Users/aabdulla/CLionProjects/avm/OperandsFactory.hpp
+/Users/ayonaabdullaieva/CLionProjects/avm/OperandsFactory.hpp
 OperandsFactory.hpp
-/Users/aabdulla/CLionProjects/avm/OperandsFactory.hpp
+/Users/ayonaabdullaieva/CLionProjects/avm/OperandsFactory.hpp
 
-/Users/aabdulla/CLionProjects/avm/main.cpp
+/Users/ayonaabdullaieva/CLionProjects/avm/main.cpp
 iostream
 -
 string
@@ -56,13 +56,13 @@ string
 sstream
 -
 Stack.hpp
-/Users/aabdulla/CLionProjects/avm/Stack.hpp
+/Users/ayonaabdullaieva/CLionProjects/avm/Stack.hpp
 IOperand.hpp
-/Users/aabdulla/CLionProjects/avm/IOperand.hpp
+/Users/ayonaabdullaieva/CLionProjects/avm/IOperand.hpp
 Operand.hpp
-/Users/aabdulla/CLionProjects/avm/Operand.hpp
+/Users/ayonaabdullaieva/CLionProjects/avm/Operand.hpp
 OperandsFactory.hpp
-/Users/aabdulla/CLionProjects/avm/OperandsFactory.hpp
+/Users/ayonaabdullaieva/CLionProjects/avm/OperandsFactory.hpp
 Parser.hpp
-/Users/aabdulla/CLionProjects/avm/Parser.hpp
+/Users/ayonaabdullaieva/CLionProjects/avm/Parser.hpp
 
