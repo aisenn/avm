@@ -7,6 +7,8 @@
 #include "Operand.hpp"
 #include "OperandsFactory.hpp"
 #include "Parser.hpp"
+#include "Lexer.hpp"
+
 //#include ""
 
 /*
@@ -26,14 +28,18 @@
  * print
  * average
  * */
+#include <fstream>
 
-int main () {
+int main (int argc, char **argv) {
+
 //	Stack s;
 
-
+	Lexer::instance().input(argc, argv);
 	Operand<int8_t > w(59);
 	Operand<float > q(1.123);
 
+
+	auto tmp = Lexer::instance().cmdStack;
 	try {
 		const IOperand *a = OperandsFactory::instance().createOperand(INT8, "127");
 		const IOperand *b = OperandsFactory::instance().createOperand(FLOAT, "123");

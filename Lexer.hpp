@@ -20,7 +20,8 @@ enum eInstructions {
 	top,
 	swap,
 	peek,
-	average
+	average,
+	comment
 };
 
 struct cmd {
@@ -36,11 +37,16 @@ private:
 	~Lexer();
 
 public:
+	std::vector<cmd> cmdStack;//or just send a token
+
 	Lexer(Lexer const &) = delete;
 	Lexer &operator=(Lexer const &) = delete;
 
 	static Lexer &instance();
-	std::vector<cmd> cmdStack;//or just send a token
+
+	void input(int ac, char **av);
+	void read();
+	void read(char *);
 };
 
 

@@ -1,7 +1,7 @@
 #include "Operand.hpp"
 #include "OperandsFactory.hpp"
 
-//TODO: add mull etc. underflow and overflow handling
+//TODO: add, mull etc. underflow and overflow handling
 // div, mod to 0 exception
 
 template<> Operand<int8_t>::Operand(int8_t value) : _value(value) {

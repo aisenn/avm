@@ -1,3 +1,3 @@
-/Users/ayonaabdullaieva/CLionProjects/avm/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/Users/ayonaabdullaieva/CLionProjects/avm/cmake-build-debug/CMakeFiles/edit_cache.dir
-/Users/ayonaabdullaieva/CLionProjects/avm/cmake-build-debug/CMakeFiles/avm.dir
+/Users/aabdulla/CLionProjects/avm/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/aabdulla/CLionProjects/avm/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/aabdulla/CLionProjects/avm/cmake-build-debug/CMakeFiles/avm.dir
