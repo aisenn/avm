@@ -34,3 +34,5 @@ char const * AvmExceptions::BadFunction::what( void ) const _NOEXCEPT {
 }
 
 AvmExceptions::OutOfRange::OutOfRange(const std::string &s) : out_of_range(s) {}
+
+AvmExceptions::SyntaxError::SyntaxError(const std::string &s) : logic_error("Syntax error at: " + s) {}

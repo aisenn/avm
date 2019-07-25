@@ -4,6 +4,7 @@
 CMakeFiles/avm.dir/AvmExceptions.cpp.o: ../AvmExceptions.cpp
 CMakeFiles/avm.dir/AvmExceptions.cpp.o: ../AvmExceptions.hpp
 
+CMakeFiles/avm.dir/Lexer.cpp.o: ../AvmExceptions.hpp
 CMakeFiles/avm.dir/Lexer.cpp.o: ../IOperand.hpp
 CMakeFiles/avm.dir/Lexer.cpp.o: ../Lexer.cpp
 CMakeFiles/avm.dir/Lexer.cpp.o: ../Lexer.hpp

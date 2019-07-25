@@ -9,6 +9,8 @@
 #include "Parser.hpp"
 #include "Lexer.hpp"
 
+
+
 //#include ""
 
 /*
@@ -35,6 +37,8 @@ int main (int argc, char **argv) {
 //	Stack s;
 
 	Lexer::instance().input(argc, argv);
+
+
 	Operand<int8_t > w(59);
 	Operand<float > q(1.123);
 

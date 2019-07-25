@@ -66,8 +66,11 @@ T operandSizeCheck(std::string const & value) {
 			throw AvmExceptions::InvalidValue();
 		return val;
 	}
-	catch(const std::exception& e)
-	{
+	catch(const AvmExceptions::InvalidValue &e) {
+		std::string msg = value + " value is invalid";
+		throw AvmExceptions::OutOfRange(msg);
+	}
+	catch(const std::exception &e) {
 		std::string msg = value + " is out of " + type<T>() + " range";
 		throw AvmExceptions::OutOfRange(msg);
 	}

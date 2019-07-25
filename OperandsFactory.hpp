@@ -2,6 +2,7 @@
 # define OPERANDSFACTORY_HPP
 
 # include "IOperand.hpp"
+# include <map>
 
 //TODO: pulymorth in factory method pattern?
 // https://codereview.stackexchange.com/questions/197486/singleton-class-and-correct-way-to-access-it-in-c
@@ -14,9 +15,6 @@ class OperandsFactory {
 private:
 	typedef IOperand const* (OperandsFactory::*fnPtr)(std::string const& value) const;
 	static fnPtr method[];
-
-
-//	typedef std::map<eOperandType, IOperand const* (OperandsFactory::*)(std::string const & value) const>	create;
 
 	OperandsFactory();
 

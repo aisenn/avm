@@ -3,6 +3,8 @@
 
 //TODO: add, mull etc. underflow and overflow handling
 // div, mod to 0 exception
+// https://www.codeproject.com/Questions/895846/Cplusplus-template-specialization-for-several-type
+
 
 template<> Operand<int8_t>::Operand(int8_t value) : _value(value) {
 	std::stringstream ss;

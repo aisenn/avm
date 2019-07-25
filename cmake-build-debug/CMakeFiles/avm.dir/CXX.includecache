@@ -6,6 +6,16 @@
 
 #IncludeRegexTransform: 
 
+/Users/aabdulla/CLionProjects/avm/AvmExceptions.hpp
+string
+-
+exception
+-
+stdexcept
+-
+functional
+-
+
 /Users/aabdulla/CLionProjects/avm/IOperand.hpp
 string
 -
@@ -13,9 +23,13 @@ string
 /Users/aabdulla/CLionProjects/avm/Lexer.cpp
 Lexer.hpp
 /Users/aabdulla/CLionProjects/avm/Lexer.hpp
+AvmExceptions.hpp
+/Users/aabdulla/CLionProjects/avm/AvmExceptions.hpp
 iostream
 -
 fstream
+-
+regex
 -
 
 /Users/aabdulla/CLionProjects/avm/Lexer.hpp

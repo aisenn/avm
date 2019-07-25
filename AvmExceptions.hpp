@@ -36,6 +36,11 @@ public:
 	public:
 		OutOfRange(const std::string &s);
 	};
+
+	class SyntaxError : public std::logic_error  {
+	public:
+		SyntaxError(const std::string &s);
+	};
 };
 
 #endif //AVEXCEPTIONS_HPP
