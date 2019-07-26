@@ -7,6 +7,10 @@
 
 //TODO: https://solarianprogrammer.com/2011/10/12/cpp-11-regex-tutorial/
 // https://stackoverflow.com/questions/3279543/what-is-the-copy-and-swap-idiom/3279550#3279550
+// http://pygments.org/docs/lexerdevelopment/
+// https://nitschinger.at/Writing-a-simple-lexer-in-PHP/
+// https://web-answers.ru/c/probel-shkipera-pri-ispolzovanii-boost-spirit-qi-i.html
+// http://kiri11.ru/boost_spirit_qi_part5/
 Lexer::Lexer()
 	: rPush("(push( |\t)((int(8|16|32))|double|float)(.*))"),
 	  rAssert("(assert( |\t)((int(8|16|32))|double|float)(.*))"),
