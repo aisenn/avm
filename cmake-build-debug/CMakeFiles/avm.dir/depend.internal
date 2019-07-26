@@ -22,8 +22,12 @@ CMakeFiles/avm.dir/OperandsFactory.cpp.o
  /Users/aabdulla/CLionProjects/avm/OperandsFactory.cpp
  /Users/aabdulla/CLionProjects/avm/OperandsFactory.hpp
 CMakeFiles/avm.dir/Parser.cpp.o
+ /Users/aabdulla/CLionProjects/avm/IOperand.hpp
+ /Users/aabdulla/CLionProjects/avm/Lexer.hpp
+ /Users/aabdulla/CLionProjects/avm/OperandsFactory.hpp
  /Users/aabdulla/CLionProjects/avm/Parser.cpp
  /Users/aabdulla/CLionProjects/avm/Parser.hpp
+ /Users/aabdulla/CLionProjects/avm/Stack.hpp
 CMakeFiles/avm.dir/Stack.cpp.o
  /Users/aabdulla/CLionProjects/avm/IOperand.hpp
  /Users/aabdulla/CLionProjects/avm/OperandsFactory.hpp

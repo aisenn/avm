@@ -9,16 +9,52 @@
 #include "OperandsFactory.hpp"
 #include "OperandsFactory.hpp"
 
+#define  STACK Stack::instance()
+
+template <typename T>
+class Stack : public std::stack<T>
+{
+public:
+	Stack() {}
+	Stack(Stack const &cp) {
+		*this = cp;
+	}
+	~Stack() {}
+
+	Stack &operator=(Stack const &rhs) {
+		if (this != &rhs)
+			this->c = rhs.c;
+		return *this;
+	}
+
+	typedef typename std::stack<T>::container_type::const_iterator iterator;
+
+	iterator begin() {
+		return this->c.begin();
+	}
+	iterator end() {
+		return this->c.end();
+	}
+
+	static Stack &instance() {
+		static Stack instance;
+		return instance;
+	}
+};
+
+/*
 class Stack : public std::stack<IOperand>
 {
 public:
 	Stack() {}
-	/*Stack(Stack const &cp) {
+	*/
+/*Stack(Stack const &cp) {
 		*this = cp;
-	}*/
+	}*//*
+
 	~Stack() {}
 
-/*	Stack &operator=(Stack const &rhs) {
+	Stack &operator=(Stack const &rhs) {
 		if (this != &rhs)
 			this->c = rhs.c;
 		return *this;
@@ -31,14 +67,17 @@ public:
 	}
 	iterator end() {
 		return this->c.end();
-	}*/
+	}
 
-	/*void push(const IOperand *op) {
+	*/
+/*void push(const IOperand *op) {
 		this->emplace(op);
-	}*/
+	}*//*
 
 
-	/*void add() {
+
+	*/
+/*void add() {
 		if (this->size() > 1)
 		{
 			auto lop = this->top();
@@ -101,7 +140,9 @@ public:
 		}
 		else
 			std::cout << "Stack size is les then 2" << std::endl;
-	}*/
+	}*//*
+
 };
 
+*/
 #endif //STACK_HPP

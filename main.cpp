@@ -34,9 +34,10 @@
 
 int main (int argc, char **argv) {
 
-//	Stack s;
+	Stack<int> s;
+	s.push();
 
-	Lexer::instance().input(argc, argv);
+	LEXER.input(argc, argv);
 
 
 	Operand<int8_t > w(59);

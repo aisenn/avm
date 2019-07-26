@@ -5,6 +5,7 @@
 #include "string"//
 #include <regex>
 
+#define  LEXER Lexer::instance()
 
 enum class eInst {
 	push,
@@ -26,7 +27,7 @@ enum class eInst {
 };
 
 struct cmd {
-	eInst	inst;
+	eInst			inst;
 	eOperandType	type;
 	std::string		value;
 };
@@ -47,7 +48,7 @@ private:
 	const std::regex rMod;
 	const std::regex rPrint;
 	const std::regex rExit;
-
+	const std::regex rInst;
 	Lexer();
 	~Lexer();
 

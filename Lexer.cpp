@@ -12,15 +12,16 @@ Lexer::Lexer()
 	  rAssert("(assert( |\t)((int(8|16|32))|double|float)(.*))"),
 	  rType("(int(8|16|32)|(double|float))"),
 	  rDigit(R"(\(((\+|-)?[[:digit:]]+)(\.(([[:digit:]]+)?))?((e|E)((\+|-)?)[[:digit:]]+)?\))"),
-	  rPop(R"(^[ \t\n]*(pop)[ \t\n]*)"),
-	  rDump(R"(^[ \t\n]*(dump)[ \t\n]*)"),
-	  rAdd(R"(^[ \t\n]*(add)[ \t\n]*)"),
-	  rSub(R"(^[ \t\n]*(sub)[ \t\n]*)"),
-	  rMul(R"(^[ \t\n]*(mul)[ \t\n]*)"),
-	  rDiv(R"(^[ \t\n]*(div)[ \t\n]*)"),
-	  rMod(R"(^[ \t\n]*(mod)[ \t\n]*)"),
-	  rPrint(R"(^[ \t\n]*(print)[ \t\n]*)"),
-	  rExit(R"(^[ \t\n]*(exit)[ \t\n]*)"),
+//	  rPop(R"(^[ \t\n]*(pop)[ \t\n]*)"),
+//	  rDump(R"(^[ \t\n]*(dump)[ \t\n]*)"),
+//	  rAdd(R"(^[ \t\n]*(add)[ \t\n]*)"),
+//	  rSub(R"(^[ \t\n]*(sub)[ \t\n]*)"),
+//	  rMul(R"(^[ \t\n]*(mul)[ \t\n]*)"),
+//	  rDiv(R"(^[ \t\n]*(div)[ \t\n]*)"),
+//	  rMod(R"(^[ \t\n]*(mod)[ \t\n]*)"),
+//	  rPrint(R"(^[ \t\n]*(print)[ \t\n]*)"),
+//	  rExit(R"(^[ \t\n]*(exit)[ \t\n]*)"),
+	  rInst(R"(^[ \t\n]*(pop|dump|add|sub|mul|div|mod|exit|print)[ \t\n]*)"),
 	  cmdStack() {}
 Lexer::~Lexer() {}
 
@@ -29,28 +30,9 @@ Lexer &Lexer::instance() {
 	return instance;
 }
 
-/*std::map<std::string, TokenType> Lexer::_patternMap =
-{
-		{"(int(8|16|32)\\(([-]?[0-9]+)\\))|(((double|float)\\(([-]?[0-9]+\\.[0-9]+)\\)))", TokenType::VALUE},
-		{"and|or|pop|dump|add|sub|mul|div|mod|exit|print", TokenType::ACTION},
-		{"push|assert", TokenType::INSTR}
-};*/
-
 // TODO: throw ex when more the one match?
 
 std::string	Lexer::findValue(const std::string &line) {
-/*
-	std::regex words_regex("\\((\\d+)\\)");
-	std::regex r("(\\+|-)?[[:digit:]]+");
-
-	for(std::sregex_iterator i = std::sregex_iterator(line.begin(), line.end(), r);
-		i != std::sregex_iterator();
-		++i)
-	{
-		std::smatch m = *i;
-		std::cout << m[1].str();
-//		return m[1].str();
-	}*/
 	auto		wBegin = std::sregex_iterator(line.begin(), line.end(), rDigit);
 	auto		wEnd = std::sregex_iterator();
 	std::string	val = (*wBegin).str();
@@ -102,29 +84,20 @@ eOperandType Lexer::findType(const std::string &line) const
 
 cmd Lexer::tokenise(std::string &line) {
 	static const std::map<std::string, cmd> typ = {
-			{"dump",	{eInst::dump,		INT8, ""	} },
-			{"add",		{eInst::add,		INT8, ""	} },
-			{"sub",		{eInst::subtract,	INT8, ""	} },
-			{"mul",		{eInst::multiply,	INT8, ""	} },
-			{"div",		{eInst::divide,		INT8, ""	} },
-			{"mod",		{eInst::modulo,		INT8, ""	} },
-			{"print",	{eInst::print,		INT8, ""	} },
-			{"exit",	{eInst::exit,		INT8, ""	} },
+			{"dump",	{eInst::dump,		eNULL, ""	} },
+			{"add",		{eInst::add,		eNULL, ""	} },
+			{"sub",		{eInst::subtract,	eNULL, ""	} },
+			{"mul",		{eInst::multiply,	eNULL, ""	} },
+			{"div",		{eInst::divide,		eNULL, ""	} },
+			{"mod",		{eInst::modulo,		eNULL, ""	} },
+			{"print",	{eInst::print,		eNULL, ""	} },
+			{"exit",	{eInst::exit,		eNULL, ""	} },
 	};
 
 	std::smatch m;
-	const std::regex rTest(R"(^[ \t\n]*(pop|dump|add|sub|mul|div|mod|exit|print)[ \t\n]*)");
-
-	if (std::regex_match(line, m, rTest))
+	if (std::regex_match(line, m, rInst))
 	{
-		std::string str = m.str();
-		str.erase(std::remove_if(str.begin(), str.end(), ::isspace), str.end());
-/*		std::string str;
-		std::stringstream tmp;
-		tmp << m.str();
-		tmp >> str;*/
-//		std::cout << str << std::endl;
-		auto it = typ.find(str);
+		auto it = typ.lower_bound(m.str());
 		if(it != typ.end())
 			return it->second;
 	}
@@ -133,9 +106,6 @@ cmd Lexer::tokenise(std::string &line) {
 	else if (std::regex_match(line.c_str(), rAssert))
 		return {eInst::assert, findType(line), findValue(line)};
 	throw(AvmExceptions::SyntaxError(line));
-
-
-	//_----------------
 
 /*	cmd command;
 	if (std::regex_match(line.c_str(), rPush)) {
@@ -178,6 +148,7 @@ void Lexer::read()
 {
 	std::string line;
 	cmd instr;
+
 	while (!std::getline(std::cin, line).eof()) {
 
 		if (line == ";;")
@@ -188,24 +159,22 @@ void Lexer::read()
 		if (line.empty())
 			continue;
 		try {
-
-			findValue(line);
+			instr = tokenise(line);
 		}
 		catch (std::exception &e) {
 			std::cout << "ERROR: " << e.what() << std::endl;
 			continue;
 		}
-		if (instr.inst != eInst::comment) //
-			cmdStack.push_back(instr);
+		cmdStack.push_back(instr);
 	}
 }
 
 void Lexer::read(char *fileName)
 {
 	std::ifstream someVarName(fileName);
-
 	std::string line;
 	cmd instr;
+
 	while (std::getline(someVarName, line)) {
 		size_t column = line.find(';');
 		if (column != std::string::npos)
@@ -219,8 +188,7 @@ void Lexer::read(char *fileName)
 			std::cout << "ERROR: " << e.what() << std::endl;
 			continue;
 		}
-		if (instr.inst != eInst::comment) //
-			cmdStack.push_back(instr);
+		cmdStack.push_back(instr);
 	}
 }
 
