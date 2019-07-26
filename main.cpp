@@ -34,7 +34,7 @@
 
 int main (int argc, char **argv) {
 
-	Stack<int> s;
+	iterStack<int> s;
 	s.push();
 
 	LEXER.input(argc, argv);

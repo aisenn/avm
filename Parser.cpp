@@ -19,6 +19,8 @@ void	Parser::commandsParsing() {
 			case eInst::push : {
 				STACK->push(FACTORY.createOperand(it->type, it->value));
 				STACK.push();
+				iterStack<IOperand const *> a;
+				a.push(FACTORY.createOperand(it->type, it->value));
 			}
 		}
 	}
