@@ -31,6 +31,12 @@ fstream
 -
 regex
 -
+map
+-
+tuple
+-
+sstream
+-
 
 /Users/aabdulla/CLionProjects/avm/Lexer.hpp
 IOperand.hpp
@@ -38,5 +44,7 @@ IOperand.hpp
 string
 /Users/aabdulla/CLionProjects/avm/string
 vector
+-
+regex
 -
 

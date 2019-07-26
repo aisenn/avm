@@ -1,5 +1,12 @@
-push int8(1)
+	add
+	sub
+	mul
+	div
+	mod
+	print
+	exit
+push int8(1.1321321)
 ; 1234567890
 push int16(2)
-add
+		    add
 exit

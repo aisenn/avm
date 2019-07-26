@@ -8,7 +8,7 @@
 // https://codereview.stackexchange.com/questions/197486/singleton-class-and-correct-way-to-access-it-in-c
 
 # define  FACTORY OperandsFactory::instance()
-//# define  FACTORY(type, val) OperandsFactory::instance().createOperand( type, value )
+//# define  FACTORY(rType, val) OperandsFactory::instance().createOperand( rType, value )
 
 
 class OperandsFactory {

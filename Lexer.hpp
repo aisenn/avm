@@ -3,9 +3,10 @@
 
 #include "IOperand.hpp"
 #include "string"//
-#include <vector>
+#include <regex>
 
-enum eInstructions {
+
+enum class eInst {
 	push,
 	pop,
 	dump,
@@ -16,7 +17,7 @@ enum eInstructions {
 	divide,
 	modulo,
 	print,
-//	exit,
+	exit,
 	top,
 	swap,
 	peek,
@@ -25,7 +26,7 @@ enum eInstructions {
 };
 
 struct cmd {
-	eInstructions	inst;
+	eInst	inst;
 	eOperandType	type;
 	std::string		value;
 };
@@ -33,6 +34,20 @@ struct cmd {
 class Lexer
 {
 private:
+	const std::regex rPush;
+	const std::regex rAssert;
+	const std::regex rType;
+	const std::regex rDigit;
+	const std::regex rPop;
+	const std::regex rDump;
+	const std::regex rAdd;
+	const std::regex rSub;
+	const std::regex rMul;
+	const std::regex rDiv;
+	const std::regex rMod;
+	const std::regex rPrint;
+	const std::regex rExit;
+
 	Lexer();
 	~Lexer();
 
@@ -47,6 +62,10 @@ public:
 	void input(int ac, char **av);
 	void read();
 	void read(char *);
+
+	cmd tokenise(std::string &line);
+	std::string findValue(const std::string &line);
+	eOperandType findType(const std::string &line) const;
 };
 
 
