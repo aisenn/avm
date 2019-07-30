@@ -14,4 +14,8 @@ add_executable(avm
         Stack.hpp
         Parser.cpp
         Parser.hpp
-        Operand.cpp AvmExceptions.cpp AvmExceptions.hpp Lexer.cpp Lexer.hpp)
+        Operand.cpp
+        AvmExceptions.cpp
+        AvmExceptions.hpp
+        Lexer.cpp
+        Lexer.hpp)

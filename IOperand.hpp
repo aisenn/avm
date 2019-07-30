@@ -4,7 +4,6 @@
 # include <string>
 
 enum eOperandType {
-	eNULL, //
 	INT8,
 	INT16,
 	INT32,

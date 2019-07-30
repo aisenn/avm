@@ -1,6 +1,6 @@
 #include "Operand.hpp"
 #include "OperandsFactory.hpp"
-
+#include <cmath>
 //TODO: add, mull etc. underflow and overflow handling
 // div, mod to 0 exception
 // https://www.codeproject.com/Questions/895846/Cplusplus-template-specialization-for-several-type
@@ -50,6 +50,8 @@ template<> eOperandType	Operand<int32_t>::getType( void ) const { return INT32; 
 template<> eOperandType	Operand<float>::getType( void ) const   { return FLOAT;  }
 template<> eOperandType	Operand<double>::getType( void ) const  { return DOUBLE; }
 
+//template<class T> eOperandType	getType( void )  { return Operand<T>::getType(); }
+
 template<class T>
 IOperand const * Operand<T>::operator+( IOperand const & rhs ) const {
 	if (this->getPrecision() < rhs.getPrecision())
@@ -69,7 +71,7 @@ IOperand const * Operand<T>::operator-( IOperand const & rhs ) const {
 		return (rhs - *this);
 	T lhs_value = static_cast<T>(this->_value);
 	T rhs_value = static_cast<T>(std::stod(rhs.toString()));
-	std::string res = std::to_string(lhs_value + rhs_value);
+	std::string res = std::to_string(lhs_value - rhs_value);
 
 	return (FACTORY.createOperand(this->getType(), res));
 }
@@ -80,17 +82,52 @@ IOperand const * Operand<T>::operator*( IOperand const & rhs ) const {
 		return (rhs * *this);
 	T lhs_value = static_cast<T>(this->_value);
 	T rhs_value = static_cast<T>(std::stod(rhs.toString()));
-	std::string res = std::to_string(lhs_value + rhs_value);
+	std::string res = std::to_string(lhs_value * rhs_value);
 
 	return (FACTORY.createOperand(this->getType(), res));
 }
 
 template<class T>
 IOperand const * Operand<T>::operator/( IOperand const & rhs ) const {
-	return 0;
+	if (rhs.toString() == "0") //TODO: overload comparison operator ???
+		throw (AvmExceptions::DivideByZero());
+	if (this->getPrecision() < rhs.getPrecision())
+		return *FACTORY.createOperand(rhs.getType(), this->_strValue) / rhs;
+	T lhs_value = static_cast<T>(this->_value);
+	T rhs_value = static_cast<T>(std::stod(rhs.toString()));
+	std::string res = std::to_string(lhs_value / rhs_value);
+
+	return (FACTORY.createOperand(this->getType(), res));
 }
+
+/*template <class T>
+IOperand const * operator/(T lhs, IOperand const & rhs) {
+	T rhs_value = static_cast<T>(std::stod(rhs.toString()));
+	std::string res = std::to_string(lhs / rhs_value);
+
+
+	return (FACTORY.createOperand(getType(), res));
+}*/
+
 
 template<class T>
 IOperand const * Operand<T>::operator%( IOperand const & rhs ) const {
-	return 0;
+	if (rhs.toString() == "0") //TODO: overload comparison operator ???
+		throw (AvmExceptions::ModuloByZero());
+	if (this->getPrecision() < rhs.getPrecision())
+		return *FACTORY.createOperand(rhs.getType(), this->_strValue) / rhs;
+	T lhs_value = static_cast<T>(this->_value);
+	T rhs_value = static_cast<T>(std::stod(rhs.toString()));
+	std::string res = std::to_string(std::fmod(lhs_value, rhs_value));
+
+	return (FACTORY.createOperand(this->getType(), res));
 }
+
+/*
+template <class T>
+std::ostream &operator<<(std::ostream &os, const Operand<T> &operand)
+{
+	os << operand.toString() << std::endl;
+	return os;
+}
+*/

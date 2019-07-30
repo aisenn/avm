@@ -1,12 +1,16 @@
-	add
-	sub
-	mul
-	div
-	mod
-	print
-	exit
-push int8(1.1321321)
-; 1234567890
 push int16(2)
-		    add
+push int8(32)
+push int8(7)
+        print
+        pop
+        print
+        pop
+        print
+		    ;	add
+            ;	sub
+            ;	mul
+            	div
+            	mod
+            	print
+            	exit ; commmets__++_+_
 exit

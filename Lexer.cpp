@@ -12,19 +12,19 @@
 // https://web-answers.ru/c/probel-shkipera-pri-ispolzovanii-boost-spirit-qi-i.html
 // http://kiri11.ru/boost_spirit_qi_part5/
 Lexer::Lexer()
-	: rPush("(push( |\t)((int(8|16|32))|double|float)(.*))"),
-	  rAssert("(assert( |\t)((int(8|16|32))|double|float)(.*))"),
+	: rPush("(^[ \\t\\n]*(push)( |\t)((int(8|16|32))|double|float)(.*))"),
+	  rAssert("(^[ \\t\\n]*(assert)( |\t)((int(8|16|32))|double|float)(.*))"),
 	  rType("(int(8|16|32)|(double|float))"),
 	  rDigit(R"(\(((\+|-)?[[:digit:]]+)(\.(([[:digit:]]+)?))?((e|E)((\+|-)?)[[:digit:]]+)?\))"),
-//	  rPop(R"(^[ \t\n]*(pop)[ \t\n]*)"),
-//	  rDump(R"(^[ \t\n]*(dump)[ \t\n]*)"),
-//	  rAdd(R"(^[ \t\n]*(add)[ \t\n]*)"),
-//	  rSub(R"(^[ \t\n]*(sub)[ \t\n]*)"),
-//	  rMul(R"(^[ \t\n]*(mul)[ \t\n]*)"),
-//	  rDiv(R"(^[ \t\n]*(div)[ \t\n]*)"),
-//	  rMod(R"(^[ \t\n]*(mod)[ \t\n]*)"),
-//	  rPrint(R"(^[ \t\n]*(print)[ \t\n]*)"),
-//	  rExit(R"(^[ \t\n]*(exit)[ \t\n]*)"),
+	  rPop(R"(^[ \t\n]*(pop)[ \t\n]*)"),
+	  rDump(R"(^[ \t\n]*(dump)[ \t\n]*)"),
+	  rAdd(R"(^[ \t\n]*(add)[ \t\n]*)"),
+	  rSub(R"(^[ \t\n]*(sub)[ \t\n]*)"),
+	  rMul(R"(^[ \t\n]*(mul)[ \t\n]*)"),
+	  rDiv(R"(^[ \t\n]*(div)[ \t\n]*)"),
+	  rMod(R"(^[ \t\n]*(mod)[ \t\n]*)"),
+	  rPrint(R"(^[ \t\n]*(print)[ \t\n]*)"),
+	  rExit(R"(^[ \t\n]*(exit)[ \t\n]*)"),
 	  rInst(R"(^[ \t\n]*(pop|dump|add|sub|mul|div|mod|exit|print)[ \t\n]*)"),
 	  cmdStack() {}
 Lexer::~Lexer() {}
@@ -87,7 +87,7 @@ eOperandType Lexer::findType(const std::string &line) const
 }
 
 cmd Lexer::tokenise(std::string &line) {
-	static const std::map<std::string, cmd> typ = {
+/*	static const std::map<std::string, cmd> typ = {
 			{"dump",	{eInst::dump,		eNULL, ""	} },
 			{"add",		{eInst::add,		eNULL, ""	} },
 			{"sub",		{eInst::subtract,	eNULL, ""	} },
@@ -106,12 +106,12 @@ cmd Lexer::tokenise(std::string &line) {
 			return it->second;
 	}
 	if (std::regex_match(line.c_str(), rPush))
-		return {eInst::pop, findType(line), findValue(line)};
+		return {eInst::push, findType(line), findValue(line)};
 	else if (std::regex_match(line.c_str(), rAssert))
 		return {eInst::assert, findType(line), findValue(line)};
-	throw(AvmExceptions::SyntaxError(line));
+	throw(AvmExceptions::SyntaxError(line));*/
 
-/*	cmd command;
+	cmd command;
 	if (std::regex_match(line.c_str(), rPush)) {
 		command.inst = eInst::push;
 		command.type = findType(line);
@@ -144,9 +144,48 @@ cmd Lexer::tokenise(std::string &line) {
 		command.inst = eInst::exit;
 	else
 		throw(AvmExceptions::SyntaxError(line));
-	return command;*/
+	return command;
 }
 
+
+//test tokeniser
+/*void Lexer::tokenise(std::string &line, cmd &instr) {
+	static const std::map<std::string, eInst > typ = {
+			{"dump",	eInst::dump	 },
+			{"add",		eInst::add	 },
+			{"sub",		eInst::subtract },
+			{"mul",		eInst::multiply },
+			{"div",		eInst::divide	 },
+			{"mod",		eInst::modulo	 },
+			{"print",	eInst::print	 },
+			{"exit",	eInst::exit	 },
+	};
+
+	std::smatch m;
+	if (std::regex_match(line, m, rInst))
+	{
+		auto it = typ.lower_bound(m.str());
+		std::cout << m.str() << (int)it->second << std::endl;
+		if(it != typ.end())
+			instr.inst = it->second;
+	}
+	else if (std::regex_match(line.c_str(), rPush))
+	{
+//		instr = {.inst = eInst::push, .type = findType(line), .value = findValue(line)};
+		instr.inst = eInst::push;
+		instr.type = findType(line);
+		instr.value = findValue(line);
+	}
+	else if (std::regex_match(line.c_str(), rAssert))
+	{
+//		instr = {.inst = eInst::assert, .type = findType(line), .value = findValue(line)};
+		instr.inst = eInst::assert;
+		instr.type = findType(line);
+		instr.value = findValue(line);
+	}
+	else
+		throw(AvmExceptions::SyntaxError(line));
+}*/
 
 void Lexer::read()
 {
@@ -187,12 +226,14 @@ void Lexer::read(char *fileName)
 			continue;
 		try {
 			instr = tokenise(line);
+//			tokenise(line, instr);
 		}
 		catch (std::exception &e) {
 			std::cout << "ERROR: " << e.what() << std::endl;
 			continue;
 		}
-		cmdStack.push_back(instr);
+//		cmdStack.push_back(instr);
+		PARSER.cmdStack.push_back(instr);
 	}
 }
 

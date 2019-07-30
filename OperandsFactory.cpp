@@ -62,7 +62,7 @@ T operandSizeCheck(std::string const & value) {
 			throw AvmExceptions::Overflow(type<T>());
 		else if (val < std::numeric_limits<T>::min())
 			throw AvmExceptions::Underflow(type<T>());
-		else if (!std::isnormal(val))
+		else if (!std::isnormal(val) && val != 0)
 			throw AvmExceptions::InvalidValue();
 		return val;
 	}

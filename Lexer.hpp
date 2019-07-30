@@ -2,8 +2,10 @@
 #define LEXER_HPP
 
 #include "IOperand.hpp"
+#include "Parser.hpp"
 #include "string"//
 #include <regex>
+#include <iostream>
 
 #define  LEXER Lexer::instance()
 
@@ -27,6 +29,10 @@ enum class eInst {
 };
 
 struct cmd {
+	~cmd() {
+		static int a = 0;
+		std::cout << "DESTRUCTOR " << a++ << std::endl;
+	}
 	eInst			inst;
 	eOperandType	type;
 	std::string		value;
@@ -65,6 +71,7 @@ public:
 	void read(char *);
 
 	cmd tokenise(std::string &line);
+	void tokenise(std::string &line, cmd &instr);
 	std::string findValue(const std::string &line);
 	eOperandType findType(const std::string &line) const;
 };

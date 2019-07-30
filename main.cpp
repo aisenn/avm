@@ -35,10 +35,10 @@
 int main (int argc, char **argv) {
 
 	iterStack<int> s;
-	s.push();
+//	s.push();
 
 	LEXER.input(argc, argv);
-
+	PARSER.commandsParsing();
 
 	Operand<int8_t > w(59);
 	Operand<float > q(1.123);

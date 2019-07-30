@@ -3,8 +3,11 @@
 
 #include "Lexer.hpp"
 #include "OperandsFactory.hpp"
+#include <vector>
 
 #define  PARSER Parser::instance()
+
+struct cmd;//
 
 class Parser {
 private:

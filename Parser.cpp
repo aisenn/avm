@@ -14,14 +14,28 @@ Parser &Parser::instance() {
 }
 
 void	Parser::commandsParsing() {
+	//TODO: do not use STACK macro here
+//	for (auto i : cmdStack)
 	for (auto it = cmdStack.begin(); it != cmdStack.end(); ++it) {
 		switch (it->inst) {
 			case eInst::push : {
-				STACK->push(FACTORY.createOperand(it->type, it->value));
-				STACK.push();
-				iterStack<IOperand const *> a;
-				a.push(FACTORY.createOperand(it->type, it->value));
+				STACK.push(FACTORY.createOperand(it->type, it->value));
+				break;
 			}
+			case eInst::assert : {
+//				STACK.assert(it->value, it->type);
+				break;
+			}
+			case eInst::pop : STACK.pop();		break; //TODO: overload pop
+			case eInst::dump : STACK.dump();	break;
+			case eInst::add : STACK.add();		break;
+			case eInst::subtract : STACK.sub();	break;
+			case eInst::multiply : STACK.mul();	break;
+			case eInst::divide : STACK.div();	break;
+			case eInst::modulo : STACK.mod();	break;
+			case eInst::print : STACK.print();	break;
+			case eInst::exit : std::exit(0);			//TODO: exit ??
+			default: throw (AvmExceptions::UndefinedInstruction());
 		}
 	}
 }

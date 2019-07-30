@@ -3,6 +3,7 @@
 
 #include "IOperand.hpp"
 #include <sstream> //
+#include <ostream>
 #include "AvmExceptions.hpp"
 
 //TODO: https://en.wikibooks.org/wiki/C_Programming/stdint.h
@@ -38,12 +39,24 @@ public:
 	virtual IOperand const * operator/( IOperand const & rhs ) const override;
 	virtual IOperand const * operator%( IOperand const & rhs ) const override;
 
+//	friend IOperand const * operator/(T x, IOperand const & rhs); //TODO: is it ok to use friend???
+
 	virtual std::string const & toString( void ) const override {
 		return this->_strValue;
 	}
 
 	~Operand() override {}
+
 };
+
+/*template <class T>
+IOperand const * operator/(const T lhs, IOperand const & rhs) {
+	T rhs_value = static_cast<T>(std::stod(rhs.toString()));
+	std::string res = std::to_string(lhs / rhs_value);
+
+	return (FACTORY.createOperand(rhs.getType(), res));
+}*/
+
 
 template <> eOperandType Operand<int8_t >::getType() const;
 template <> eOperandType Operand<int16_t >::getType() const;
