@@ -4,6 +4,7 @@
 #include <fstream>
 #include <map>
 #include <sstream> //
+#include <sys/stat.h> //
 
 //TODO: https://solarianprogrammer.com/2011/10/12/cpp-11-regex-tutorial/
 // https://stackoverflow.com/questions/3279543/what-is-the-copy-and-swap-idiom/3279550#3279550
@@ -11,6 +12,7 @@
 // https://nitschinger.at/Writing-a-simple-lexer-in-PHP/
 // https://web-answers.ru/c/probel-shkipera-pri-ispolzovanii-boost-spirit-qi-i.html
 // http://kiri11.ru/boost_spirit_qi_part5/
+
 Lexer::Lexer()
 	: rPush("(^[ \\t\\n]*(push)( |\t)((int(8|16|32))|double|float)(.*))"),
 	  rAssert("(^[ \\t\\n]*(assert)( |\t)((int(8|16|32))|double|float)(.*))"),
@@ -26,7 +28,7 @@ Lexer::Lexer()
 	  rPrint(R"(^[ \t\n]*(print)[ \t\n]*)"),
 	  rExit(R"(^[ \t\n]*(exit)[ \t\n]*)"),
 	  rInst(R"(^[ \t\n]*(pop|dump|add|sub|mul|div|mod|exit|print)[ \t\n]*)"),
-	  cmdStack() {}
+	  rEndOfProg(R"(^[ \t\n]*(;;)[ \t\n]*)") {}
 Lexer::~Lexer() {}
 
 Lexer &Lexer::instance() {
@@ -35,8 +37,10 @@ Lexer &Lexer::instance() {
 }
 
 // TODO: throw ex when more the one match?
+// TODO: empty arg int()
+// TODO: argument like int8(42
 
-std::string	Lexer::findValue(const std::string &line) {
+std::string	Lexer::findValue(const std::string &line) const {
 	auto		wBegin = std::sregex_iterator(line.begin(), line.end(), rDigit);
 	auto		wEnd = std::sregex_iterator();
 	std::string	val = (*wBegin).str();
@@ -44,8 +48,8 @@ std::string	Lexer::findValue(const std::string &line) {
 	for (char c: "()") {
 		val.erase(std::remove(val.begin(), val.end(), c), val.end());
 	}
-	if (std::distance(wBegin, wEnd) > 1)
-		throw(AvmExceptions::SyntaxError(line));
+	if (std::distance(wBegin, wEnd) > 1 || val.empty())
+		throw(AvmExceptions::SyntaxError());
 	return val;
 }
 
@@ -83,11 +87,11 @@ eOperandType Lexer::findType(const std::string &line) const
 		if(it != typeMap.end())
 			return it->second;
 	}
-	throw(AvmExceptions::SyntaxError(line));
+	throw(AvmExceptions::SyntaxError());
 }
 
-cmd Lexer::tokenise(std::string &line) {
-/*	static const std::map<std::string, cmd> typ = {
+void Lexer::tokenise(std::string &line, cmd &inst) const {
+	/*	static const std::map<std::string, cmd> typ = {
 			{"dump",	{eInst::dump,		eNULL, ""	} },
 			{"add",		{eInst::add,		eNULL, ""	} },
 			{"sub",		{eInst::subtract,	eNULL, ""	} },
@@ -111,90 +115,48 @@ cmd Lexer::tokenise(std::string &line) {
 		return {eInst::assert, findType(line), findValue(line)};
 	throw(AvmExceptions::SyntaxError(line));*/
 
-	cmd command;
 	if (std::regex_match(line.c_str(), rPush)) {
-		command.inst = eInst::push;
-		command.type = findType(line);
-		command.value = findValue(line);
+		inst.inst = eInst::push;
+		inst.type = findType(line);
+		inst.value = findValue(line);
 	}
 	else if (std::regex_match(line.c_str(), rAssert)) {
-		command.inst = eInst::assert;
-		command.type = findType(line);
-		command.value = findValue(line);
+		inst.inst = eInst::assert;
+		inst.type = findType(line);
+		inst.value = findValue(line);
 	}
 	else if (std::regex_match(line.c_str(), rPop))
-		command.inst = eInst::pop;
+		inst.inst = eInst::pop;
 	else if (std::regex_match(line.c_str(), rDump))
-		command.inst = eInst::dump;
+		inst.inst = eInst::dump;
 	else if (std::regex_match(line.c_str(), rAssert))
-		command.inst = eInst::assert;
+		inst.inst = eInst::assert;
 	else if (std::regex_match(line.c_str(), rAdd))
-		command.inst = eInst::add;
+		inst.inst = eInst::add;
 	else if (std::regex_match(line.c_str(), rSub))
-		command.inst = eInst::subtract;
+		inst.inst = eInst::subtract;
 	else if (std::regex_match(line.c_str(), rMul))
-		command.inst = eInst::multiply;
+		inst.inst = eInst::multiply;
 	else if (std::regex_match(line.c_str(), rDiv))
-		command.inst = eInst::divide;
+		inst.inst = eInst::divide;
 	else if (std::regex_match(line.c_str(), rMod))
-		command.inst = eInst::modulo;
+		inst.inst = eInst::modulo;
 	else if (std::regex_match(line.c_str(), rPrint))
-		command.inst = eInst::print;
+		inst.inst = eInst::print;
 	else if (std::regex_match(line.c_str(), rExit))
-		command.inst = eInst::exit;
+		inst.inst = eInst::exit;
 	else
-		throw(AvmExceptions::SyntaxError(line));
-	return command;
+		throw(AvmExceptions::SyntaxError());
 }
-
-
-//test tokeniser
-/*void Lexer::tokenise(std::string &line, cmd &instr) {
-	static const std::map<std::string, eInst > typ = {
-			{"dump",	eInst::dump	 },
-			{"add",		eInst::add	 },
-			{"sub",		eInst::subtract },
-			{"mul",		eInst::multiply },
-			{"div",		eInst::divide	 },
-			{"mod",		eInst::modulo	 },
-			{"print",	eInst::print	 },
-			{"exit",	eInst::exit	 },
-	};
-
-	std::smatch m;
-	if (std::regex_match(line, m, rInst))
-	{
-		auto it = typ.lower_bound(m.str());
-		std::cout << m.str() << (int)it->second << std::endl;
-		if(it != typ.end())
-			instr.inst = it->second;
-	}
-	else if (std::regex_match(line.c_str(), rPush))
-	{
-//		instr = {.inst = eInst::push, .type = findType(line), .value = findValue(line)};
-		instr.inst = eInst::push;
-		instr.type = findType(line);
-		instr.value = findValue(line);
-	}
-	else if (std::regex_match(line.c_str(), rAssert))
-	{
-//		instr = {.inst = eInst::assert, .type = findType(line), .value = findValue(line)};
-		instr.inst = eInst::assert;
-		instr.type = findType(line);
-		instr.value = findValue(line);
-	}
-	else
-		throw(AvmExceptions::SyntaxError(line));
-}*/
 
 void Lexer::read()
 {
 	std::string line;
 	cmd instr;
+	int i = 0;
 
 	while (!std::getline(std::cin, line).eof()) {
-
-		if (line == ";;")
+		if (std::regex_match(line.c_str(), rEndOfProg))
 			break;
 		size_t column = line.find(';');
 		if (column != std::string::npos)
@@ -202,45 +164,63 @@ void Lexer::read()
 		if (line.empty())
 			continue;
 		try {
-			instr = tokenise(line);
+			i++;
+			tokenise(line, instr);
 		}
 		catch (std::exception &e) {
-			std::cout << "ERROR: " << e.what() << std::endl;
+			std::cout << "Line " << i << ": " << e.what() << std::endl;
 			continue;
 		}
-		cmdStack.push_back(instr);
+		PARSER.setCommand(instr);
 	}
+	if (instr.inst != eInst::exit)
+		throw (AvmExceptions::ExceptionString("No exit command"));
 }
 
-void Lexer::read(char *fileName)
+void Lexer::read(std::string &fileName)
 {
-	std::ifstream someVarName(fileName);
+	std::ifstream buff(fileName);
 	std::string line;
 	cmd instr;
+	int i = 0;
 
-	while (std::getline(someVarName, line)) {
-		size_t column = line.find(';');
-		if (column != std::string::npos)
-			line.erase(column);
+	{
+		struct stat s;
+		if ((stat(fileName.c_str(), &s) != 0) || !(s.st_mode & S_IFREG) || !buff.is_open())
+			throw AvmExceptions::ExceptionString("Failed to open " + fileName);
+	}
+	while (std::getline(buff, line)) {
+		std::string tmp = line;
+		size_t comment = line.find(';');
+		if (comment != std::string::npos)
+			line.erase(comment);
 		if (line.empty())
 			continue;
 		try {
-			instr = tokenise(line);
-//			tokenise(line, instr);
+			i++;
+			tokenise(line, instr);
 		}
-		catch (std::exception &e) {
-			std::cout << "ERROR: " << e.what() << std::endl;
+		catch (AvmExceptions::SyntaxError &e) {
+			std::cout << "Line " << i << ": " << e.what() << tmp << std::endl;
 			continue;
 		}
-//		cmdStack.push_back(instr);
-		PARSER.cmdStack.push_back(instr);
+		catch (std::exception &e) {
+			std::cout << "Line " << i << ": " << e.what() << std::endl;
+			continue;
+		}
+		PARSER.setCommand(instr);
 	}
+	if (instr.inst != eInst::exit)
+		throw (AvmExceptions::ExceptionString("No exit command"));
 }
 
+//TODO: more then one file
 void Lexer::input(int ac, char **av) {
-
 	if (ac == 2)
-		read(av[1]);
+	{
+		std::string fileName(av[1]);
+		read(fileName);
+	}
 	else
 		read();
 }

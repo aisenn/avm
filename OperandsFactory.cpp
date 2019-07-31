@@ -47,9 +47,9 @@ int main() {
 
 // TODO: something better
 template <typename T> std::string type()	{ return "Undefined"; }
-template <> std::string type<int8_t >()		{ return "int8_t";	}
-template <> std::string type<int16_t >()	{ return "int16_t";	}
-template <> std::string type<int32_t >()	{ return "int32_t";	}
+template <> std::string type<int8_t >()		{ return "int8";	}
+template <> std::string type<int16_t >()	{ return "int16";	}
+template <> std::string type<int32_t >()	{ return "int32";	}
 template <> std::string type<float >()		{ return "float";	}
 template <> std::string type<double >()		{ return "double";	}
 
@@ -68,11 +68,11 @@ T operandSizeCheck(std::string const & value) {
 	}
 	catch(const AvmExceptions::InvalidValue &e) {
 		std::string msg = value + " value is invalid";
-		throw AvmExceptions::OutOfRange(msg);
+		throw AvmExceptions::ExceptionString(msg);
 	}
 	catch(const std::exception &e) {
-		std::string msg = value + " is out of " + type<T>() + " range";
-		throw AvmExceptions::OutOfRange(msg);
+		std::string msg = type<T>() + '(' +  value + ") is out of range";
+		throw AvmExceptions::ExceptionString(msg);
 	}
 }
 // TODO: END something better

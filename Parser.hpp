@@ -11,19 +11,19 @@ struct cmd;//
 
 class Parser {
 private:
+	std::vector<cmd> _cmdStack;
+
 	Parser();
 	~Parser();
 
 public:
-	std::vector<cmd> cmdStack; // move to private
-
-	Parser &operator=(Parser const &) = delete;
+	Parser	&operator=(Parser const &) = delete;
 	Parser(Parser const &) = delete;
 
-	static Parser &instance();
-
+	static	Parser &instance();
 	void	commandsParsing();
-};
 
+	void	setCommand(cmd &command);
+};
 
 #endif //PARSER_HPP

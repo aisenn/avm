@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/Users/ayonaabdullaieva/CLionProjects/avm/AvmExceptions.hpp
+/Users/aabdulla/CLionProjects/avm/AvmExceptions.hpp
 string
 -
 exception
@@ -16,57 +16,41 @@ stdexcept
 functional
 -
 
-/Users/ayonaabdullaieva/CLionProjects/avm/IOperand.hpp
+/Users/aabdulla/CLionProjects/avm/IOperand.hpp
 string
 -
 
-/Users/ayonaabdullaieva/CLionProjects/avm/Lexer.hpp
+/Users/aabdulla/CLionProjects/avm/Lexer.hpp
 IOperand.hpp
-/Users/ayonaabdullaieva/CLionProjects/avm/IOperand.hpp
+/Users/aabdulla/CLionProjects/avm/IOperand.hpp
 Parser.hpp
-/Users/ayonaabdullaieva/CLionProjects/avm/Parser.hpp
+/Users/aabdulla/CLionProjects/avm/Parser.hpp
 string
-/Users/ayonaabdullaieva/CLionProjects/avm/string
+/Users/aabdulla/CLionProjects/avm/string
 regex
 -
 iostream
 -
 
-/Users/ayonaabdullaieva/CLionProjects/avm/Operand.hpp
+/Users/aabdulla/CLionProjects/avm/OperandsFactory.hpp
 IOperand.hpp
-/Users/ayonaabdullaieva/CLionProjects/avm/IOperand.hpp
-sstream
--
-ostream
--
-AvmExceptions.hpp
-/Users/ayonaabdullaieva/CLionProjects/avm/AvmExceptions.hpp
-
-/Users/ayonaabdullaieva/CLionProjects/avm/OperandsFactory.hpp
-IOperand.hpp
-/Users/ayonaabdullaieva/CLionProjects/avm/IOperand.hpp
+/Users/aabdulla/CLionProjects/avm/IOperand.hpp
 map
 -
 
-/Users/ayonaabdullaieva/CLionProjects/avm/Parser.cpp
-Parser.hpp
-/Users/ayonaabdullaieva/CLionProjects/avm/Parser.hpp
-Stack.hpp
-/Users/ayonaabdullaieva/CLionProjects/avm/Stack.hpp
-
-/Users/ayonaabdullaieva/CLionProjects/avm/Parser.hpp
+/Users/aabdulla/CLionProjects/avm/Parser.hpp
 Lexer.hpp
-/Users/ayonaabdullaieva/CLionProjects/avm/Lexer.hpp
+/Users/aabdulla/CLionProjects/avm/Lexer.hpp
 OperandsFactory.hpp
-/Users/ayonaabdullaieva/CLionProjects/avm/OperandsFactory.hpp
+/Users/aabdulla/CLionProjects/avm/OperandsFactory.hpp
 vector
 -
 
-/Users/ayonaabdullaieva/CLionProjects/avm/Stack.cpp
+/Users/aabdulla/CLionProjects/avm/Stack.cpp
 Stack.hpp
-/Users/ayonaabdullaieva/CLionProjects/avm/Stack.hpp
+/Users/aabdulla/CLionProjects/avm/Stack.hpp
 
-/Users/ayonaabdullaieva/CLionProjects/avm/Stack.hpp
+/Users/aabdulla/CLionProjects/avm/Stack.hpp
 iostream
 -
 stack
@@ -78,33 +62,13 @@ deque
 cctype
 -
 IOperand.hpp
-/Users/ayonaabdullaieva/CLionProjects/avm/IOperand.hpp
+/Users/aabdulla/CLionProjects/avm/IOperand.hpp
 OperandsFactory.hpp
-/Users/ayonaabdullaieva/CLionProjects/avm/OperandsFactory.hpp
+/Users/aabdulla/CLionProjects/avm/OperandsFactory.hpp
 OperandsFactory.hpp
-/Users/ayonaabdullaieva/CLionProjects/avm/OperandsFactory.hpp
+/Users/aabdulla/CLionProjects/avm/OperandsFactory.hpp
 AvmExceptions.hpp
-/Users/ayonaabdullaieva/CLionProjects/avm/AvmExceptions.hpp
-
-/Users/ayonaabdullaieva/CLionProjects/avm/main.cpp
-iostream
--
-string
--
-sstream
--
-Stack.hpp
-/Users/ayonaabdullaieva/CLionProjects/avm/Stack.hpp
-IOperand.hpp
-/Users/ayonaabdullaieva/CLionProjects/avm/IOperand.hpp
-Operand.hpp
-/Users/ayonaabdullaieva/CLionProjects/avm/Operand.hpp
-OperandsFactory.hpp
-/Users/ayonaabdullaieva/CLionProjects/avm/OperandsFactory.hpp
-Parser.hpp
-/Users/ayonaabdullaieva/CLionProjects/avm/Parser.hpp
+/Users/aabdulla/CLionProjects/avm/AvmExceptions.hpp
 Lexer.hpp
-/Users/ayonaabdullaieva/CLionProjects/avm/Lexer.hpp
-fstream
--
+/Users/aabdulla/CLionProjects/avm/Lexer.hpp
 

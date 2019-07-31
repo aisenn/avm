@@ -34,33 +34,16 @@
 
 int main (int argc, char **argv) {
 
-	iterStack<int> s;
-//	s.push();
-
-	LEXER.input(argc, argv);
-	PARSER.commandsParsing();
-
-	Operand<int8_t > w(59);
-	Operand<float > q(1.123);
-
-
-	auto tmp = Lexer::instance().cmdStack;
 	try {
+		LEXER.input(argc, argv);
+		PARSER.commandsParsing();
+
 		const IOperand *a = OperandsFactory::instance().createOperand(INT8, "127");
 		const IOperand *b = OperandsFactory::instance().createOperand(FLOAT, "123");
 
-		w.getType();
-		w + q;
-		a = b + 100;
 	}
 	catch (std::exception &e) {
 		std::cout << e.what() << std::endl;
 	}
-
-
-/*	s.push("1");
-	s.push("2");
-	s.push("3");*/
-//	s.add();
-	return 9;
+	return 0;
 }

@@ -41,11 +41,13 @@ char const * AvmExceptions::BadFunction::what( void ) const _NOEXCEPT {
 	return "Bad function call";
 }
 
-AvmExceptions::OutOfRange::OutOfRange(const std::string &s) : out_of_range(s) {}
+AvmExceptions::ExceptionString::ExceptionString(const std::string &s) : logic_error(s) {}
 
-AvmExceptions::SyntaxError::SyntaxError(const std::string &s)
-	: logic_error("Syntax error at: " + s) {}
+AvmExceptions::SyntaxError::SyntaxError()
+	: logic_error("Syntax error: ") {}
 
 AvmExceptions::ExpressionError::ExpressionError(const std::string &s)
 	: logic_error(s + " operation on less than two values in stack") {}
 
+AvmExceptions::AssertError::AssertError()
+	: logic_error("Assert failed") {}

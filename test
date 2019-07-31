@@ -1,16 +1,16 @@
-push int16(2)
-push int8(32)
-push int8(7)
-        print
-        pop
-        print
-        pop
-        print
-		    ;	add
-            ;	sub
-            ;	mul
-            	div
-            	mod
-            	print
-            	exit ; commmets__++_+_
+push int8(33) ;!
+push int8(112) ;p
+push int8(111) ;o
+push int8(108) ;l
+push int8(112) ;p
+print
+pop
+print
+pop
+print
+pop
+print
+pop
+print
+pop
 exit

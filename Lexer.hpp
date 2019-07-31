@@ -21,18 +21,12 @@ enum class eInst {
 	modulo,
 	print,
 	exit,
-	top,
 	swap,
-	peek,
 	average,
 	comment
 };
 
 struct cmd {
-	~cmd() {
-		static int a = 0;
-		std::cout << "DESTRUCTOR " << a++ << std::endl;
-	}
 	eInst			inst;
 	eOperandType	type;
 	std::string		value;
@@ -55,25 +49,24 @@ private:
 	const std::regex rPrint;
 	const std::regex rExit;
 	const std::regex rInst;
+	const std::regex rEndOfProg;
+
 	Lexer();
 	~Lexer();
 
 public:
-	std::vector<cmd> cmdStack;//or just send a token
-
 	Lexer(Lexer const &) = delete;
 	Lexer &operator=(Lexer const &) = delete;
 
-	static Lexer &instance();
+	static Lexer	&instance();
 
-	void input(int ac, char **av);
-	void read();
-	void read(char *);
+	void			input(int ac, char **av);
+	void			read();
+	void			read(std::string &);
 
-	cmd tokenise(std::string &line);
-	void tokenise(std::string &line, cmd &instr);
-	std::string findValue(const std::string &line);
-	eOperandType findType(const std::string &line) const;
+	void			tokenise(std::string &line, cmd &inst) const;
+	std::string		findValue(const std::string &line) const;
+	eOperandType	findType(const std::string &line) const;
 };
 
 
