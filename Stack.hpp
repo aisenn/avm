@@ -34,7 +34,7 @@ public:
 
 	static Stack	&instance();
 
-	void			assert(eOperandType &type, std::string &strValue);
+	void			massert(eOperandType &type, std::string &strValue);
 
 	void			mpop();
 	void			dump();

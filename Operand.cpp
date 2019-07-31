@@ -1,10 +1,9 @@
 #include "Operand.hpp"
 #include "OperandsFactory.hpp"
+#include <sstream>
 #include <cmath>
-//TODO: add, mull etc. underflow and overflow handling
-// div, mod to 0 exception
-// https://www.codeproject.com/Questions/895846/Cplusplus-template-specialization-for-several-type
 
+// TODO: https://www.codeproject.com/Questions/895846/Cplusplus-template-specialization-for-several-type
 
 template<> Operand<int8_t>::Operand(int8_t value) : _value(value) {
 	std::stringstream ss;
@@ -58,8 +57,6 @@ IOperand const * Operand<T>::operator+( IOperand const & rhs ) const {
 		return (rhs + *this);
 	T lhsValue = static_cast<T>(this->_value);
 	T rhsValue = static_cast<T>(std::stod(rhs.toString()));
-//	flow_check<T>(lhsValue, rhsValue);
-
 	std::string res = std::to_string(lhsValue + rhsValue);
 
 	return (FACTORY.createOperand(this->getType(), res));
@@ -109,25 +106,15 @@ IOperand const * operator/(T lhs, IOperand const & rhs) {
 	return (FACTORY.createOperand(getType(), res));
 }*/
 
-
 template<class T>
 IOperand const * Operand<T>::operator%( IOperand const & rhs ) const {
 	if (rhs.toString() == "0") //TODO: overload comparison operator ???
 		throw (AvmExceptions::ModuloByZero());
 	if (this->getPrecision() < rhs.getPrecision())
-		return *FACTORY.createOperand(rhs.getType(), this->_strValue) / rhs;
+		return *FACTORY.createOperand(rhs.getType(), this->_strValue) % rhs;
 	T lhs_value = static_cast<T>(this->_value);
 	T rhs_value = static_cast<T>(std::stod(rhs.toString()));
 	std::string res = std::to_string(std::fmod(lhs_value, rhs_value));
 
 	return (FACTORY.createOperand(this->getType(), res));
 }
-
-/*
-template <class T>
-std::ostream &operator<<(std::ostream &os, const Operand<T> &operand)
-{
-	os << operand.toString() << std::endl;
-	return os;
-}
-*/

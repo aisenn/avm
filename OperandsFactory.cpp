@@ -1,9 +1,8 @@
 #include "OperandsFactory.hpp"
 #include "Operand.hpp"
-#include "iostream" //
-#include <cmath>//
-
 #include "AvmExceptions.hpp"
+#include <string>
+#include <cmath>
 
 //TODO: https://stackoverflow.com/questions/199333/how-do-i-detect-unsigned-integer-multiply-overflow?page=1&tab=votes#tab-top
 // https://gcc.gnu.org/onlinedocs/gcc/Integer-Overflow-Builtins.html
@@ -20,30 +19,6 @@ OperandsFactory::fnPtr OperandsFactory::method[] = {
 };
 
 OperandsFactory::~OperandsFactory() {}
-
-/*#include <iostream>
-#include <string>
-
-int main() {
-
-	std::string s = "10";
-
-	try
-	{
-		int i = std::stoi(s);
-		std::cout << i << '\n';
-	}
-	catch (std::invalid_argument const &e)
-	{
-		std::cout << "Bad input: std::invalid_argument thrown" << '\n';
-	}
-	catch (std::out_of_range const &e)
-	{
-		std::cout << "Integer overflow: std::out_of_range thrown" << '\n';
-	}
-
-	return 0;
-}*/
 
 // TODO: something better
 template <typename T> std::string type()	{ return "Undefined"; }
@@ -95,12 +70,12 @@ IOperand const *OperandsFactory::createInt32( std::string const & value ) const 
 // TODO: thow stof, stod exception
 
 IOperand const *OperandsFactory::createFloat( std::string const & value ) const {
-	float val = operandSizeCheck<float>(value);
+	auto val = operandSizeCheck<float>(value);
 	return new Operand<float>(val);
 }
 
 IOperand const *OperandsFactory::createDouble( std::string const & value ) const {
-	double val = operandSizeCheck<double>(value);
+	auto val = operandSizeCheck<double>(value);
 	return new Operand<double>(val);
 }
 

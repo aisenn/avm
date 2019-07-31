@@ -2,11 +2,7 @@
 #define OPERAND_HPP
 
 #include "IOperand.hpp"
-#include <sstream> //
-#include <ostream>
 #include "AvmExceptions.hpp"
-
-//TODO: https://en.wikibooks.org/wiki/C_Programming/stdint.h
 
 template <class T>
 class Operand : public IOperand {

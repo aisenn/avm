@@ -1,7 +1,6 @@
 #include "Parser.hpp"
 #include "Stack.hpp"
 
-
 //TODO https://github.com/brhamidi/abstract-vm/blob/master/Lexer.cpp
 //TODO: could I use = default??
 
@@ -17,7 +16,7 @@ void	Parser::commandsParsing() {
 	for (auto &it : _cmdStack) {
 		switch (it.inst) {
 			case eInst::push : STACK.push(FACTORY.createOperand(it.type, it.value)); break;
-			case eInst::assert : STACK.assert(it.type, it.value); break;
+			case eInst::assert : STACK.massert(it.type, it.value); break;
 			case eInst::pop : STACK.mpop();		break;
 			case eInst::dump : STACK.dump();	break;
 			case eInst::add : STACK.add();		break;
@@ -34,5 +33,4 @@ void	Parser::commandsParsing() {
 
 void Parser::setCommand(cmd &command) {
 	_cmdStack.push_back(command);
-//	_cmdStack.emplace_back(command);
 }

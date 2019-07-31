@@ -7,7 +7,7 @@
 
 #define  PARSER Parser::instance()
 
-struct cmd;//
+struct cmd;
 
 class Parser {
 private:

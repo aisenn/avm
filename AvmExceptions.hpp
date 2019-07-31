@@ -10,14 +10,14 @@
 
 class AvmExceptions {
 public:
-	class DivideByZero : public std::exception { char const * what( void ) const _NOEXCEPT; };
-	class ModuloByZero : public std::exception { char const * what( void ) const _NOEXCEPT; };
-	class PopOnEmptyStack : public std::exception { char const * what( void ) const _NOEXCEPT; };
-	class PrintOnEmptyStack : public std::exception { char const * what( void ) const _NOEXCEPT; };
+	class DivideByZero : public std::exception { char const * what( void ) const noexcept; };
+	class ModuloByZero : public std::exception { char const * what( void ) const noexcept; };
+	class PopOnEmptyStack : public std::exception { char const * what( void ) const noexcept; };
+	class PrintOnEmptyStack : public std::exception { char const * what( void ) const noexcept; };
 
-	class UndefinedInstruction : public std::bad_function_call { char const * what( void ) const _NOEXCEPT; };
-	class InvalidValue : public std::exception { char const * what( void ) const _NOEXCEPT; };
-	class BadFunction : public std::bad_function_call { char const * what( void ) const _NOEXCEPT; };
+	class UndefinedInstruction : public std::bad_function_call { char const * what( void ) const noexcept; };
+	class InvalidValue : public std::exception { char const * what( void ) const noexcept; };
+	class BadFunction : public std::bad_function_call { char const * what( void ) const noexcept; };
 
 	class Overflow : public std::overflow_error {
 	public:

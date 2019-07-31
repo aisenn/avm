@@ -6,69 +6,39 @@
 
 #IncludeRegexTransform: 
 
-/Users/aabdulla/CLionProjects/avm/AvmExceptions.hpp
-string
--
-exception
--
-stdexcept
--
-functional
--
-
-/Users/aabdulla/CLionProjects/avm/IOperand.hpp
+/Users/ayonaabdullaieva/CLionProjects/avm/IOperand.hpp
 string
 -
 
-/Users/aabdulla/CLionProjects/avm/Lexer.hpp
+/Users/ayonaabdullaieva/CLionProjects/avm/Lexer.hpp
 IOperand.hpp
-/Users/aabdulla/CLionProjects/avm/IOperand.hpp
+/Users/ayonaabdullaieva/CLionProjects/avm/IOperand.hpp
 Parser.hpp
-/Users/aabdulla/CLionProjects/avm/Parser.hpp
+/Users/ayonaabdullaieva/CLionProjects/avm/Parser.hpp
 string
-/Users/aabdulla/CLionProjects/avm/string
+-
 regex
 -
 iostream
 -
 
-/Users/aabdulla/CLionProjects/avm/OperandsFactory.hpp
+/Users/ayonaabdullaieva/CLionProjects/avm/OperandsFactory.hpp
 IOperand.hpp
-/Users/aabdulla/CLionProjects/avm/IOperand.hpp
+/Users/ayonaabdullaieva/CLionProjects/avm/IOperand.hpp
 map
 -
 
-/Users/aabdulla/CLionProjects/avm/Parser.hpp
+/Users/ayonaabdullaieva/CLionProjects/avm/Parser.hpp
 Lexer.hpp
-/Users/aabdulla/CLionProjects/avm/Lexer.hpp
+/Users/ayonaabdullaieva/CLionProjects/avm/Lexer.hpp
 OperandsFactory.hpp
-/Users/aabdulla/CLionProjects/avm/OperandsFactory.hpp
+/Users/ayonaabdullaieva/CLionProjects/avm/OperandsFactory.hpp
 vector
 -
 
-/Users/aabdulla/CLionProjects/avm/Stack.cpp
-Stack.hpp
-/Users/aabdulla/CLionProjects/avm/Stack.hpp
-
-/Users/aabdulla/CLionProjects/avm/Stack.hpp
-iostream
--
-stack
--
-iterator
--
-deque
--
-cctype
--
-IOperand.hpp
-/Users/aabdulla/CLionProjects/avm/IOperand.hpp
-OperandsFactory.hpp
-/Users/aabdulla/CLionProjects/avm/OperandsFactory.hpp
-OperandsFactory.hpp
-/Users/aabdulla/CLionProjects/avm/OperandsFactory.hpp
-AvmExceptions.hpp
-/Users/aabdulla/CLionProjects/avm/AvmExceptions.hpp
+/Users/ayonaabdullaieva/CLionProjects/avm/main.cpp
+Parser.hpp
+/Users/ayonaabdullaieva/CLionProjects/avm/Parser.hpp
 Lexer.hpp
-/Users/aabdulla/CLionProjects/avm/Lexer.hpp
+/Users/ayonaabdullaieva/CLionProjects/avm/Lexer.hpp
 

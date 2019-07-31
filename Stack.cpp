@@ -38,7 +38,7 @@ void Stack::mpop() {
 	this->pop();
 }
 
-void Stack::assert(eOperandType &type, std::string &strValue) {
+void Stack::massert(eOperandType &type, std::string &strValue) {
 	if (this->top()->getType() != type || this->top()->toString() != strValue)
 		throw (AvmExceptions::AssertError());
 }
@@ -118,5 +118,6 @@ void Stack::print() {
 
 void Stack::exit() {
 	this->dump();
+	system("leaks avm"); //TODO: delete
 	std::exit(0);
 }
