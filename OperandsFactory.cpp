@@ -4,13 +4,10 @@
 #include <string>
 #include <cmath>
 
-//TODO: https://stackoverflow.com/questions/199333/how-do-i-detect-unsigned-integer-multiply-overflow?page=1&tab=votes#tab-top
-// https://gcc.gnu.org/onlinedocs/gcc/Integer-Overflow-Builtins.html
-// https://github.com/hseos/hseos-course/blob/master/2018/03-integers/README.md
-
-OperandsFactory::OperandsFactory() {}
-
-OperandsFactory::fnPtr OperandsFactory::method[] = {
+//**********************************************
+//*               JUMPING TABLE                *
+//**********************************************
+const OperandsFactory::fnPtr OperandsFactory::method[] = {
 		&OperandsFactory::createInt8,
 		&OperandsFactory::createInt16,
 		&OperandsFactory::createInt32,
@@ -18,10 +15,14 @@ OperandsFactory::fnPtr OperandsFactory::method[] = {
 		&OperandsFactory::createDouble
 };
 
+//**********************************************
+//*          CONSTRUCTOR / DESTRUCTOR          *
+//**********************************************
+OperandsFactory::OperandsFactory() {}
 OperandsFactory::~OperandsFactory() {}
 
 // TODO: something better
-template <typename T> std::string type()	{ return "Undefined"; }
+template <typename T> static std::string type()	{ return "Undefined"; }
 template <> std::string type<int8_t >()		{ return "int8";	}
 template <> std::string type<int16_t >()	{ return "int16";	}
 template <> std::string type<int32_t >()	{ return "int32";	}
@@ -29,7 +30,7 @@ template <> std::string type<float >()		{ return "float";	}
 template <> std::string type<double >()		{ return "double";	}
 
 template <typename T>
-T operandSizeCheck(std::string const & value) {
+T static operandSizeCheck(std::string const & value) {
 	try
 	{
 		long double val = std::stold(value);
@@ -43,7 +44,7 @@ T operandSizeCheck(std::string const & value) {
 	}
 	catch(const AvmExceptions::InvalidValue &e) {
 		std::string msg = value + " value is invalid";
-		throw AvmExceptions::ExceptionString(msg);
+		throw AvmExceptions::ExceptionString(value + " value is invalid");
 	}
 	catch(const std::exception &e) {
 		std::string msg = type<T>() + '(' +  value + ") is out of range";
@@ -51,6 +52,10 @@ T operandSizeCheck(std::string const & value) {
 	}
 }
 // TODO: END something better
+
+//**********************************************
+//*              FACTORY METHODS               *
+//**********************************************
 
 IOperand const *OperandsFactory::createInt8( std::string const & value ) const {
 	int64_t val = operandSizeCheck<int8_t>(value);
@@ -85,6 +90,9 @@ IOperand const *OperandsFactory::createOperand( eOperandType type, std::string c
 	return (this->*(method[type]))(value);
 }
 
+//**********************************************
+//*              INSTANCE GETTER               *
+//**********************************************
 OperandsFactory &OperandsFactory::instance() {
 	static OperandsFactory instance;
 	return instance;

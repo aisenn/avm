@@ -13,6 +13,9 @@
 // https://web-answers.ru/c/probel-shkipera-pri-ispolzovanii-boost-spirit-qi-i.html
 // http://kiri11.ru/boost_spirit_qi_part5/
 
+//**********************************************
+//*          CONSTRUCTOR / DESTRUCTOR          *
+//**********************************************
 Lexer::Lexer()
 	: rPush("(^[ \\t\\n]*(push)( |\t)((int(8|16|32))|double|float)(.*))"),
 	  rAssert("(^[ \\t\\n]*(assert)( |\t)((int(8|16|32))|double|float)(.*))"),
@@ -29,8 +32,12 @@ Lexer::Lexer()
 	  rExit(R"(^[ \t\n]*(exit)[ \t\n]*)"),
 	  rInst(R"(^[ \t\n]*(pop|dump|add|sub|mul|div|mod|exit|print)[ \t\n]*)"),
 	  rEndOfProg(R"(^[ \t\n]*(;;)[ \t\n]*)") {}
+
 Lexer::~Lexer() {}
 
+//**********************************************
+//*              INSTANCE GETTER               *
+//**********************************************
 Lexer &Lexer::instance() {
 	static Lexer instance;
 	return instance;
@@ -40,6 +47,9 @@ Lexer &Lexer::instance() {
 // TODO: empty arg int()
 // TODO: argument like int8(42
 
+//**********************************************
+//*          PRIVATE MEMBER FUNCTIONS          *
+//**********************************************
 std::string	Lexer::findValue(const std::string &line) const {
 	auto		wBegin = std::sregex_iterator(line.begin(), line.end(), rDigit);
 	auto		wEnd = std::sregex_iterator();
@@ -153,9 +163,9 @@ void Lexer::read()
 {
 	std::string line;
 	cmd instr;
-	int i = 0;
 
-	while (!std::getline(std::cin, line).eof()) {
+	for (int i = 1; !std::getline(std::cin, line).eof(); i++) {
+		std::string tmp = line;
 		if (std::regex_match(line.c_str(), rEndOfProg))
 			break;
 		size_t column = line.find(';');
@@ -164,11 +174,12 @@ void Lexer::read()
 		if (line.empty())
 			continue;
 		try {
-			i++;
+			if (instr.inst == eInst::exit)
+				throw(AvmExceptions::ExceptionString("Commands after exit instruction"));
 			tokenise(line, instr);
 		}
 		catch (std::exception &e) {
-			std::cout << "Line " << i << ": " << e.what() << std::endl;
+			std::cout << "Line " << i << ": " << e.what() << tmp << std::endl;
 			continue;
 		}
 		PARSER.setCommand(instr);
@@ -182,14 +193,14 @@ void Lexer::read(std::string &fileName)
 	std::ifstream buff(fileName);
 	std::string line;
 	cmd instr;
-	int i = 0;
 
 	{
 		struct stat s;
 		if ((stat(fileName.c_str(), &s) != 0) || !(s.st_mode & S_IFREG) || !buff.is_open())
 			throw AvmExceptions::ExceptionString("Failed to open " + fileName);
 	}
-	while (std::getline(buff, line)) {
+	PARSER.fdEmplase(); //TODO: check chmod 000 , dir and invalid name
+	for (int i = 1; std::getline(buff, line); i++) {
 		std::string tmp = line;
 		size_t comment = line.find(';');
 		if (comment != std::string::npos)
@@ -197,7 +208,8 @@ void Lexer::read(std::string &fileName)
 		if (line.empty())
 			continue;
 		try {
-			i++;
+			if (instr.inst == eInst::exit)
+				throw(AvmExceptions::ExceptionString("Commands after exit instruction"));
 			tokenise(line, instr);
 		}
 		catch (AvmExceptions::SyntaxError &e) {
@@ -208,18 +220,32 @@ void Lexer::read(std::string &fileName)
 			std::cout << "Line " << i << ": " << e.what() << std::endl;
 			continue;
 		}
-		PARSER.setCommand(instr);
+//		PARSER.setCommand(instr);
+		PARSER.setCom(instr);
 	}
 	if (instr.inst != eInst::exit)
 		throw (AvmExceptions::ExceptionString("No exit command"));
 }
 
+//**********************************************
+//*           PUBLIC MEMBER FUNCTIONS          *
+//**********************************************
 //TODO: more then one file
 void Lexer::input(int ac, char **av) {
-	if (ac == 2)
+	if (ac > 1)
 	{
-		std::string fileName(av[1]);
-		read(fileName);
+		for (int i = 1; i < ac; i++) {
+			std::string fileName(av[i]);
+			read(fileName);
+		}
+
+		//TODO: https://github.com/Svalorzen/cpp-readline
+		cmd in; //TODO: delete
+		PARSER.setCommand(in); //TODO: delete
+
+		/*std::string fileName(av[1]);
+		read(fileName);*/
+
 	}
 	else
 		read();

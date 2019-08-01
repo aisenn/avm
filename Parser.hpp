@@ -2,7 +2,6 @@
 #define PARSER_HPP
 
 #include "Lexer.hpp"
-#include "OperandsFactory.hpp"
 #include <vector>
 
 #define  PARSER Parser::instance()
@@ -11,7 +10,9 @@ struct cmd;
 
 class Parser {
 private:
+	static int it;
 	std::vector<cmd> _cmdStack;
+	std::vector<std::vector<cmd> > _cmd;
 
 	Parser();
 	~Parser();
@@ -24,6 +25,15 @@ public:
 	void	commandsParsing();
 
 	void	setCommand(cmd &command);
+
+	void	fdEmplase() {
+		Parser::it++;
+		_cmd.emplace_back(std::vector<cmd>(0));
+
+	}
+	void setCom(cmd &command) {
+		_cmd[Parser::it].push_back(command);
+	}
 };
 
 #endif //PARSER_HPP

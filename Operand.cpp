@@ -5,6 +5,9 @@
 
 // TODO: https://www.codeproject.com/Questions/895846/Cplusplus-template-specialization-for-several-type
 
+//**********************************************
+//*          CONSTRUCTOR / DESTRUCTOR          *
+//**********************************************
 template<> Operand<int8_t>::Operand(int8_t value) : _value(value) {
 	std::stringstream ss;
 	ss << static_cast<int16_t>(this->_value);
@@ -49,8 +52,9 @@ template<> eOperandType	Operand<int32_t>::getType( void ) const { return INT32; 
 template<> eOperandType	Operand<float>::getType( void ) const   { return FLOAT;  }
 template<> eOperandType	Operand<double>::getType( void ) const  { return DOUBLE; }
 
-//template<class T> eOperandType	getType( void )  { return Operand<T>::getType(); }
-
+//**********************************************
+//*       OVERLOADING ARITHMETIC OPERATORS     *
+//**********************************************
 template<class T>
 IOperand const * Operand<T>::operator+( IOperand const & rhs ) const {
 	if (this->getPrecision() < rhs.getPrecision())
@@ -96,15 +100,6 @@ IOperand const * Operand<T>::operator/( IOperand const & rhs ) const {
 
 	return (FACTORY.createOperand(this->getType(), res));
 }
-
-/*template <class T>
-IOperand const * operator/(T lhs, IOperand const & rhs) {
-	T rhs_value = static_cast<T>(std::stod(rhs.toString()));
-	std::string res = std::to_string(lhs / rhs_value);
-
-
-	return (FACTORY.createOperand(getType(), res));
-}*/
 
 template<class T>
 IOperand const * Operand<T>::operator%( IOperand const & rhs ) const {

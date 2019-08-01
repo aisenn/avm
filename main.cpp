@@ -1,10 +1,5 @@
-#include "Parser.hpp" //
-#include "Lexer.hpp" //
-
-/*
- * swap +
- * average
- * */
+#include "Parser.hpp"
+#include "Lexer.hpp"
 
 int main (int argc, char **argv) {
 	try {

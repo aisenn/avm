@@ -1,13 +1,13 @@
 #ifndef LEXER_HPP
 #define LEXER_HPP
 
-#include "IOperand.hpp"
-#include "Parser.hpp"
-#include <string>
-#include <regex>
-#include <iostream>
+# include "IOperand.hpp"
+# include "Parser.hpp"
+# include <string>
+# include <regex>
+# include <iostream>
 
-#define  LEXER Lexer::instance()
+# define  LEXER Lexer::instance()
 
 enum class eInst {
 	push,
@@ -20,10 +20,7 @@ enum class eInst {
 	divide,
 	modulo,
 	print,
-	exit,
-	swap,
-	average,
-	comment
+	exit
 };
 
 struct cmd {
@@ -54,6 +51,12 @@ private:
 	Lexer();
 	~Lexer();
 
+	void			tokenise(std::string &line, cmd &inst) const;
+	std::string		findValue(const std::string &line) const;
+	eOperandType	findType(const std::string &line) const;
+	void			read();
+	void			read(std::string &);
+
 public:
 	Lexer(Lexer const &) = delete;
 	Lexer &operator=(Lexer const &) = delete;
@@ -61,13 +64,6 @@ public:
 	static Lexer	&instance();
 
 	void			input(int ac, char **av);
-	void			read();
-	void			read(std::string &);
-
-	void			tokenise(std::string &line, cmd &inst) const;
-	std::string		findValue(const std::string &line) const;
-	eOperandType	findType(const std::string &line) const;
 };
-
 
 #endif //LEXER_HPP

@@ -7,8 +7,9 @@
 template <class T>
 class Operand : public IOperand {
 private:
-	T _value;
-	std::string _strValue;
+	T			_value;
+	std::string	_strValue;
+
 	Operand() {
 		throw(AvmExceptions::InvalidValue());
 	}
@@ -18,7 +19,6 @@ public:
 		throw(AvmExceptions::InvalidValue());
 	}
 	Operand(Operand const & cp);
-
 	Operand & operator=( Operand const & rhs );
 
 	int getPrecision( void ) const override {
@@ -41,7 +41,7 @@ public:
 		return this->_strValue;
 	}
 
-	~Operand() override {}
+	virtual ~Operand() override {}
 
 };
 
@@ -52,7 +52,6 @@ IOperand const * operator/(const T lhs, IOperand const & rhs) {
 
 	return (FACTORY.createOperand(rhs.getType(), res));
 }*/
-
 
 template <> eOperandType Operand<int8_t >::getType() const;
 template <> eOperandType Operand<int16_t >::getType() const;

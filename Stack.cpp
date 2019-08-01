@@ -1,16 +1,14 @@
 #include "Stack.hpp"
 
+//**********************************************
+//*          CONSTRUCTOR / DESTRUCTOR          *
+//**********************************************
 Stack::Stack( void ) {}
 Stack::~Stack( void ) {}
 
-/*Stack::Stack( Stack const & obj ) { *this = obj; }
-
-Stack &Stack::operator=( Stack const & rhs ) {
-	if (this != &rhs)
-		this->std::stack<IOperand const *>::operator=(rhs);
-	return *this;
-}*/
-
+//**********************************************
+//*                 ITERATORS                  *
+//**********************************************
 Stack::iterator Stack::begin( void ) {
 	return this->c.begin();
 }
@@ -27,11 +25,17 @@ Stack::riterator Stack::rend( void ) {
 	return this->c.rend();
 }
 
+//**********************************************
+//*              INSTANCE GETTER               *
+//**********************************************
 Stack &Stack::instance() {
 	static Stack instance;
 	return instance;
 }
 
+//**********************************************
+//*          PUBLIC MEMBER FUNCTIONS           *
+//**********************************************
 void Stack::mpop() {
 	if (this->c.empty())
 		throw AvmExceptions::PopOnEmptyStack();
@@ -58,6 +62,8 @@ void Stack::add() {
 	this->pop();
 
 	this->push(*lhs + *rhs);
+	delete lhs;
+	delete rhs;
 }
 
 void Stack::sub() {
@@ -69,6 +75,8 @@ void Stack::sub() {
 	this->pop();
 
 	this->push(*rhs - *lhs);
+	delete lhs;
+	delete rhs;
 }
 
 void Stack::mul() {
@@ -80,6 +88,8 @@ void Stack::mul() {
 	this->pop();
 
 	this->push(*lhs * *rhs);
+	delete lhs;
+	delete rhs;
 }
 
 void Stack::div() {
@@ -91,6 +101,8 @@ void Stack::div() {
 	this->pop();
 
 	this->push(*rhs / *lhs);
+	delete lhs;
+	delete rhs;
 }
 
 void Stack::mod() {
@@ -102,6 +114,8 @@ void Stack::mod() {
 	this->pop();
 
 	this->push(*rhs % *lhs);
+	delete lhs;
+	delete rhs;
 }
 
 void Stack::print() {

@@ -35,7 +35,6 @@ public:
 	static Stack	&instance();
 
 	void			massert(eOperandType &type, std::string &strValue);
-
 	void			mpop();
 	void			dump();
 	void			add();

@@ -6,15 +6,41 @@
 
 #IncludeRegexTransform: 
 
-/Users/ayonaabdullaieva/CLionProjects/avm/IOperand.hpp
+/Users/aabdulla/CLionProjects/avm/AvmExceptions.hpp
+string
+-
+exception
+-
+stdexcept
+-
+functional
+-
+
+/Users/aabdulla/CLionProjects/avm/IOperand.hpp
 string
 -
 
-/Users/ayonaabdullaieva/CLionProjects/avm/Lexer.hpp
+/Users/aabdulla/CLionProjects/avm/Lexer.cpp
+Lexer.hpp
+/Users/aabdulla/CLionProjects/avm/Lexer.hpp
+AvmExceptions.hpp
+/Users/aabdulla/CLionProjects/avm/AvmExceptions.hpp
+iostream
+-
+fstream
+-
+map
+-
+sstream
+-
+sys/stat.h
+-
+
+/Users/aabdulla/CLionProjects/avm/Lexer.hpp
 IOperand.hpp
-/Users/ayonaabdullaieva/CLionProjects/avm/IOperand.hpp
+/Users/aabdulla/CLionProjects/avm/IOperand.hpp
 Parser.hpp
-/Users/ayonaabdullaieva/CLionProjects/avm/Parser.hpp
+/Users/aabdulla/CLionProjects/avm/Parser.hpp
 string
 -
 regex
@@ -22,23 +48,9 @@ regex
 iostream
 -
 
-/Users/ayonaabdullaieva/CLionProjects/avm/OperandsFactory.hpp
-IOperand.hpp
-/Users/ayonaabdullaieva/CLionProjects/avm/IOperand.hpp
-map
--
-
-/Users/ayonaabdullaieva/CLionProjects/avm/Parser.hpp
+/Users/aabdulla/CLionProjects/avm/Parser.hpp
 Lexer.hpp
-/Users/ayonaabdullaieva/CLionProjects/avm/Lexer.hpp
-OperandsFactory.hpp
-/Users/ayonaabdullaieva/CLionProjects/avm/OperandsFactory.hpp
+/Users/aabdulla/CLionProjects/avm/Lexer.hpp
 vector
 -
-
-/Users/ayonaabdullaieva/CLionProjects/avm/main.cpp
-Parser.hpp
-/Users/ayonaabdullaieva/CLionProjects/avm/Parser.hpp
-Lexer.hpp
-/Users/ayonaabdullaieva/CLionProjects/avm/Lexer.hpp
 

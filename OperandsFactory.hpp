@@ -14,7 +14,7 @@
 class OperandsFactory {
 private:
 	typedef IOperand const* (OperandsFactory::*fnPtr)(std::string const& value) const;
-	static fnPtr method[];
+	static const fnPtr method[];
 
 	OperandsFactory();
 
