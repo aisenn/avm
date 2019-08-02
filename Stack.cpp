@@ -4,7 +4,11 @@
 //*          CONSTRUCTOR / DESTRUCTOR          *
 //**********************************************
 Stack::Stack( void ) {}
-Stack::~Stack( void ) {}
+Stack::~Stack( void ) {
+	auto rend = this->rend();
+	for (auto rit = this->rbegin(); rit != rend; rit++)
+		delete *rit;
+}
 
 //**********************************************
 //*                 ITERATORS                  *
@@ -42,6 +46,10 @@ void Stack::mpop() {
 	this->pop();
 }
 
+void Stack::mpush(eOperandType &type, std::string &strValue) {
+	STACK.push(FACTORY.createOperand(type, strValue));
+}
+
 void Stack::massert(eOperandType &type, std::string &strValue) {
 	if (this->top()->getType() != type || this->top()->toString() != strValue)
 		throw (AvmExceptions::AssertError());
@@ -56,66 +64,56 @@ void Stack::dump() {
 void Stack::add() {
 	if (this->size() < 2)
 		throw (AvmExceptions::ExpressionError("addition"));
-	const IOperand *lhs = this->top();
+	std::unique_ptr<const IOperand> lhs(this->top());
 	this->pop();
-	const IOperand *rhs = this->top();
+	std::unique_ptr<const IOperand> rhs(this->top());
 	this->pop();
 
 	this->push(*lhs + *rhs);
-	delete lhs;
-	delete rhs;
 }
 
 void Stack::sub() {
 	if (this->size() < 2)
 		throw (AvmExceptions::ExpressionError("subtract"));
-	const IOperand *lhs = this->top();
+	std::unique_ptr<const IOperand> lhs(this->top());
 	this->pop();
-	const IOperand *rhs = this->top();
+	std::unique_ptr<const IOperand> rhs(this->top());
 	this->pop();
 
 	this->push(*rhs - *lhs);
-	delete lhs;
-	delete rhs;
 }
 
 void Stack::mul() {
 	if (this->size() < 2)
 		throw (AvmExceptions::ExpressionError("multiply"));
-	const IOperand *lhs = this->top();
+	std::unique_ptr<const IOperand> lhs(this->top());
 	this->pop();
-	const IOperand *rhs = this->top();
+	std::unique_ptr<const IOperand> rhs(this->top());
 	this->pop();
 
 	this->push(*lhs * *rhs);
-	delete lhs;
-	delete rhs;
 }
 
 void Stack::div() {
 	if (this->size() < 2)
 		throw (AvmExceptions::ExpressionError("divide"));
-	const IOperand *lhs = this->top();
+	std::unique_ptr<const IOperand> lhs(this->top());
 	this->pop();
-	const IOperand *rhs = this->top();
+	std::unique_ptr<const IOperand> rhs(this->top());
 	this->pop();
 
 	this->push(*rhs / *lhs);
-	delete lhs;
-	delete rhs;
 }
 
 void Stack::mod() {
 	if (this->size() < 2)
 		throw (AvmExceptions::ExpressionError("addition"));
-	const IOperand *lhs = this->top();
+	std::unique_ptr<const IOperand> lhs(this->top());
 	this->pop();
-	const IOperand *rhs = this->top();
+	std::unique_ptr<const IOperand> rhs(this->top());
 	this->pop();
 
 	this->push(*rhs % *lhs);
-	delete lhs;
-	delete rhs;
 }
 
 void Stack::print() {
@@ -134,4 +132,8 @@ void Stack::exit() {
 	this->dump();
 	system("leaks avm"); //TODO: delete
 	std::exit(0);
+}
+
+void Stack::clear() {
+	Stack().swap(STACK);
 }

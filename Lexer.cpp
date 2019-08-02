@@ -17,21 +17,20 @@
 //*          CONSTRUCTOR / DESTRUCTOR          *
 //**********************************************
 Lexer::Lexer()
-	: rPush("(^[ \\t\\n]*(push)( |\t)((int(8|16|32))|double|float)(.*))"),
-	  rAssert("(^[ \\t\\n]*(assert)( |\t)((int(8|16|32))|double|float)(.*))"),
+	: rPush(R"(^[\s]*(push)[\s]*((int(8|16|32))|double|float)\(([^)]+)\)[\s]*)"),
+	  rAssert(R"(^[\s]*(assert)[\s]*((int(8|16|32))|double|float)\(([^)]+)\)[\s]*)"),
 	  rType("(int(8|16|32)|(double|float))"),
 	  rDigit(R"(\(((\+|-)?[[:digit:]]+)(\.(([[:digit:]]+)?))?((e|E)((\+|-)?)[[:digit:]]+)?\))"),
-	  rPop(R"(^[ \t\n]*(pop)[ \t\n]*)"),
-	  rDump(R"(^[ \t\n]*(dump)[ \t\n]*)"),
-	  rAdd(R"(^[ \t\n]*(add)[ \t\n]*)"),
-	  rSub(R"(^[ \t\n]*(sub)[ \t\n]*)"),
-	  rMul(R"(^[ \t\n]*(mul)[ \t\n]*)"),
-	  rDiv(R"(^[ \t\n]*(div)[ \t\n]*)"),
-	  rMod(R"(^[ \t\n]*(mod)[ \t\n]*)"),
-	  rPrint(R"(^[ \t\n]*(print)[ \t\n]*)"),
-	  rExit(R"(^[ \t\n]*(exit)[ \t\n]*)"),
-	  rInst(R"(^[ \t\n]*(pop|dump|add|sub|mul|div|mod|exit|print)[ \t\n]*)"),
-	  rEndOfProg(R"(^[ \t\n]*(;;)[ \t\n]*)") {}
+	  rPop(R"(^[\s]*(pop)[\s]*)"),
+	  rDump(R"(^[\s]*(dump)[\s]*)"),
+	  rAdd(R"(^[\s]*(add)[\s]*)"),
+	  rSub(R"(^[\s]*(sub)[\s]*)"),
+	  rMul(R"(^[\s]*(mul)[\s]*)"),
+	  rDiv(R"(^[\s]*(div)[\s]*)"),
+	  rMod(R"(^[\s]*(mod)[\s]*)"),
+	  rPrint(R"(^[\s]*(print)[\s]*)"),
+	  rExit(R"(^[\s]*(exit)[\s]*)"),
+	  rEndOfProg(R"(^[\s]*(;;)[\s]*)") {}
 
 Lexer::~Lexer() {}
 
@@ -162,8 +161,9 @@ void Lexer::tokenise(std::string &line, cmd &inst) const {
 void Lexer::read()
 {
 	std::string line;
-	cmd instr;
+	cmd instr{};
 
+//	PARSER.fdEmplase();
 	for (int i = 1; !std::getline(std::cin, line).eof(); i++) {
 		std::string tmp = line;
 		if (std::regex_match(line.c_str(), rEndOfProg))
@@ -192,14 +192,14 @@ void Lexer::read(std::string &fileName)
 {
 	std::ifstream buff(fileName);
 	std::string line;
-	cmd instr;
+	cmd instr{};
 
 	{
 		struct stat s;
 		if ((stat(fileName.c_str(), &s) != 0) || !(s.st_mode & S_IFREG) || !buff.is_open())
 			throw AvmExceptions::ExceptionString("Failed to open " + fileName);
 	}
-	PARSER.fdEmplase(); //TODO: check chmod 000 , dir and invalid name
+	PARSER.fdEmplase(fileName); //TODO: check chmod 000 , dir and invalid name
 	for (int i = 1; std::getline(buff, line); i++) {
 		std::string tmp = line;
 		size_t comment = line.find(';');
@@ -220,8 +220,7 @@ void Lexer::read(std::string &fileName)
 			std::cout << "Line " << i << ": " << e.what() << std::endl;
 			continue;
 		}
-//		PARSER.setCommand(instr);
-		PARSER.setCom(instr);
+		PARSER.setCommand(instr);
 	}
 	if (instr.inst != eInst::exit)
 		throw (AvmExceptions::ExceptionString("No exit command"));
@@ -235,18 +234,17 @@ void Lexer::input(int ac, char **av) {
 	if (ac > 1)
 	{
 		for (int i = 1; i < ac; i++) {
-			std::string fileName(av[i]);
-			read(fileName);
+			try {
+				std::string fileName(av[i]);
+				read(fileName);
+			}
+			catch (std::exception &e) {
+				std::cout << e.what() << std::endl;
+				continue;
+			}
 		}
-
-		//TODO: https://github.com/Svalorzen/cpp-readline
-		cmd in; //TODO: delete
-		PARSER.setCommand(in); //TODO: delete
-
-		/*std::string fileName(av[1]);
-		read(fileName);*/
-
 	}
 	else
 		read();
+	//TODO: https://github.com/Svalorzen/cpp-readline
 }

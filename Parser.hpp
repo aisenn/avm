@@ -3,6 +3,7 @@
 
 #include "Lexer.hpp"
 #include <vector>
+#include <deque>
 
 #define  PARSER Parser::instance()
 
@@ -10,9 +11,9 @@ struct cmd;
 
 class Parser {
 private:
-	static int it;
-	std::vector<cmd> _cmdStack;
-	std::vector<std::vector<cmd> > _cmd;
+	static int fd;
+	std::vector<std::vector<cmd> >	_cmdStack;
+	std::deque<std::string>			_names;
 
 	Parser();
 	~Parser();
@@ -24,16 +25,12 @@ public:
 	static	Parser &instance();
 	void	commandsParsing();
 
+	void	fdEmplase(std::string &name) {
+		Parser::fd++;
+		_cmdStack.emplace_back(std::vector<cmd>(0));
+		_names.push_back(name);
+	}
 	void	setCommand(cmd &command);
-
-	void	fdEmplase() {
-		Parser::it++;
-		_cmd.emplace_back(std::vector<cmd>(0));
-
-	}
-	void setCom(cmd &command) {
-		_cmd[Parser::it].push_back(command);
-	}
 };
 
 #endif //PARSER_HPP

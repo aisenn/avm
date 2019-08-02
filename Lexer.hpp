@@ -45,7 +45,6 @@ private:
 	const std::regex rMod;
 	const std::regex rPrint;
 	const std::regex rExit;
-	const std::regex rInst;
 	const std::regex rEndOfProg;
 
 	Lexer();

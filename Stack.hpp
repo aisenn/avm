@@ -34,6 +34,7 @@ public:
 
 	static Stack	&instance();
 
+	void			mpush(eOperandType &type, std::string &strValue);
 	void			massert(eOperandType &type, std::string &strValue);
 	void			mpop();
 	void			dump();
@@ -44,6 +45,7 @@ public:
 	void			mod();
 	void			print();
 	void			exit();
+	void			clear();
 };
 
 #endif //STACK_HPP

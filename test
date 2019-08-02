@@ -1,6 +1,4 @@
+push int8(42)
+push int8(43)
+push int8(44)
 exit
-pop
-;;
-pop
-pop
-pop
