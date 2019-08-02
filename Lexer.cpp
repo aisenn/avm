@@ -16,6 +16,7 @@
 //**********************************************
 //*          CONSTRUCTOR / DESTRUCTOR          *
 //**********************************************
+//rInst(R"(^[ \t\n]*(pop|dump|add|sub|mul|div|mod|exit|print)[ \t\n]*)"),
 Lexer::Lexer()
 	: rPush(R"(^[\s]*(push)[\s]*((int(8|16|32))|double|float)\(([^)]+)\)[\s]*)"),
 	  rAssert(R"(^[\s]*(assert)[\s]*((int(8|16|32))|double|float)\(([^)]+)\)[\s]*)"),
