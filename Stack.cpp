@@ -43,6 +43,7 @@ Stack &Stack::instance() {
 void Stack::mpop() {
 	if (this->c.empty())
 		throw AvmExceptions::PopOnEmptyStack();
+	std::unique_ptr<const IOperand> lhs(this->top());
 	this->pop();
 }
 

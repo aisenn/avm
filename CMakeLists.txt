@@ -18,4 +18,5 @@ add_executable(avm
         AvmExceptions.cpp
         AvmExceptions.hpp
         Lexer.cpp
-        Lexer.hpp)
+        Lexer.hpp
+        )

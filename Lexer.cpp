@@ -163,7 +163,8 @@ void Lexer::read()
 	std::string line;
 	cmd instr{};
 
-//	PARSER.fdEmplase();
+	std::string p;
+	PARSER.fdEmplase(p);
 	for (int i = 1; !std::getline(std::cin, line).eof(); i++) {
 		std::string tmp = line;
 		if (std::regex_match(line.c_str(), rEndOfProg))
@@ -213,11 +214,11 @@ void Lexer::read(std::string &fileName)
 			tokenise(line, instr);
 		}
 		catch (AvmExceptions::SyntaxError &e) {
-			std::cout << "Line " << i << ": " << e.what() << tmp << std::endl;
+			std::cout << "FIle " << fileName << ": Line " << i << ": " << e.what() << tmp << std::endl;
 			continue;
 		}
 		catch (std::exception &e) {
-			std::cout << "Line " << i << ": " << e.what() << std::endl;
+			std::cout << "FIle " << fileName << ": Line " << i << ": " << e.what() << std::endl;
 			continue;
 		}
 		PARSER.setCommand(instr);
