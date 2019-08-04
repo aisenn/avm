@@ -46,17 +46,7 @@ public:
 	void			print();
 	void			exit();
 	void			clear();
-	void			average() {
-		unsigned long i = this->size();
-
-		if ( i > 1)
-		{
-			while (this->size() > 1)
-				this->add();
-			this->push(FACTORY.createOperand(DOUBLE, std::to_string(i)));
-			this->div();
-		}
-	}
+	void			average();
 };
 
 #endif //STACK_HPP
