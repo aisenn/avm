@@ -1,4 +1,3 @@
 push int32(42)
-push double(33)
-div
+push double(1025)
 exit

@@ -20,22 +20,6 @@ functional
 string
 -
 
-/Users/ayonaabdullaieva/CLionProjects/avm/Lexer.cpp
-Lexer.hpp
-/Users/ayonaabdullaieva/CLionProjects/avm/Lexer.hpp
-AvmExceptions.hpp
-/Users/ayonaabdullaieva/CLionProjects/avm/AvmExceptions.hpp
-iostream
--
-fstream
--
-map
--
-sstream
--
-sys/stat.h
--
-
 /Users/ayonaabdullaieva/CLionProjects/avm/Lexer.hpp
 IOperand.hpp
 /Users/ayonaabdullaieva/CLionProjects/avm/IOperand.hpp
@@ -85,6 +69,8 @@ deque
 -
 cctype
 -
+cmath
+-
 IOperand.hpp
 /Users/ayonaabdullaieva/CLionProjects/avm/IOperand.hpp
 OperandsFactory.hpp
@@ -93,12 +79,6 @@ OperandsFactory.hpp
 /Users/ayonaabdullaieva/CLionProjects/avm/OperandsFactory.hpp
 AvmExceptions.hpp
 /Users/ayonaabdullaieva/CLionProjects/avm/AvmExceptions.hpp
-Lexer.hpp
-/Users/ayonaabdullaieva/CLionProjects/avm/Lexer.hpp
-
-/Users/ayonaabdullaieva/CLionProjects/avm/main.cpp
-Parser.hpp
-/Users/ayonaabdullaieva/CLionProjects/avm/Parser.hpp
 Lexer.hpp
 /Users/ayonaabdullaieva/CLionProjects/avm/Lexer.hpp
 

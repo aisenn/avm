@@ -6,6 +6,7 @@
 # include <iterator>
 # include <deque>
 # include <cctype> //
+# include <cmath>
 
 #include "IOperand.hpp"
 #include "OperandsFactory.hpp"
@@ -45,8 +46,29 @@ public:
 	void			mod();
 	void			print();
 	void			exit();
-	void			clear();
+	void			clear(); //TODO: make it as a bonus
 	void			average();
+	void			mlog() {
+		//TODO: add tests for errors
+		std::unique_ptr<const IOperand> tmp(this->top());
+		this->pop();
+		auto a(log(std::stod(tmp->toString())));
+		this->push(FACTORY.createOperand(DOUBLE, std::to_string(a)));
+	}
+	void 			msqrt() {
+		//TODO: add tests for errors
+		std::unique_ptr<const IOperand> tmp(this->top());
+		this->pop();
+		auto a(sqrt(std::stod(tmp->toString())));
+		this->push(FACTORY.createOperand(DOUBLE, std::to_string(a)));
+	}
+	void			mpow(eOperandType &type, std::string &strValue) {
+		//TODO: add tests for errors
+		std::unique_ptr<const IOperand> tmp(this->top());
+		this->pop();
+		auto a(pow(std::stod(tmp->toString()), std::stod(strValue)));
+		this->push(FACTORY.createOperand(type, std::to_string(a)));
+	}
 };
 
 #endif //STACK_HPP
