@@ -49,6 +49,7 @@ void	Parser::commandsParsing() {
 			try {
 				if (it.inst == eInst::exit) {
 					_names.pop_front();
+					STACK.average();
 					STACK.dump();
 					STACK.clear();
 					std::cout << "\033[1;0m" << std::endl;

@@ -38,6 +38,14 @@ IOperand.hpp
 map
 -
 
+/Users/ayonaabdullaieva/CLionProjects/avm/Parser.cpp
+Parser.hpp
+/Users/ayonaabdullaieva/CLionProjects/avm/Parser.hpp
+Stack.hpp
+/Users/ayonaabdullaieva/CLionProjects/avm/Stack.hpp
+OperandsFactory.hpp
+/Users/ayonaabdullaieva/CLionProjects/avm/OperandsFactory.hpp
+
 /Users/ayonaabdullaieva/CLionProjects/avm/Parser.hpp
 Lexer.hpp
 /Users/ayonaabdullaieva/CLionProjects/avm/Lexer.hpp
