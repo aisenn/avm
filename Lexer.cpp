@@ -29,6 +29,7 @@ Lexer::Lexer()
 	  rMul(R"(^[\s]*(mul)[\s]*)"),
 	  rDiv(R"(^[\s]*(div)[\s]*)"),
 	  rMod(R"(^[\s]*(mod)[\s]*)"),
+	  rAverage(R"(^[\s]*(average)[\s]*)"),
 	  rPrint(R"(^[\s]*(print)[\s]*)"),
 	  rExit(R"(^[\s]*(exit)[\s]*)"),
 	  rEndOfProg(R"(^[\s]*(;;)[\s]*)") {}
@@ -151,6 +152,8 @@ void Lexer::tokenise(std::string &line, cmd &inst) const {
 		inst.inst = eInst::divide;
 	else if (std::regex_match(line.c_str(), rMod))
 		inst.inst = eInst::modulo;
+	else if (std::regex_match(line.c_str(), rAverage))
+			inst.inst = eInst::average;
 	else if (std::regex_match(line.c_str(), rPrint))
 		inst.inst = eInst::print;
 	else if (std::regex_match(line.c_str(), rExit))

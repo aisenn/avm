@@ -19,6 +19,7 @@ enum class eInst {
 	multiply,
 	divide,
 	modulo,
+	average,
 	print,
 	exit
 };
@@ -43,6 +44,7 @@ private:
 	const std::regex rMul;
 	const std::regex rDiv;
 	const std::regex rMod;
+	const std::regex rAverage;
 	const std::regex rPrint;
 	const std::regex rExit;
 	const std::regex rEndOfProg;

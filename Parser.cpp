@@ -64,6 +64,7 @@ void	Parser::commandsParsing() {
 					case eInst::multiply : STACK.mul(); break;
 					case eInst::divide : STACK.div(); break;
 					case eInst::modulo : STACK.mod(); break;
+					case eInst::average : STACK.average(); break;
 					case eInst::print : STACK.print(); break;
 					default: throw (AvmExceptions::UndefinedInstruction());
 				}
