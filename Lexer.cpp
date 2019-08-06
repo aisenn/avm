@@ -65,6 +65,7 @@ eOperandType Lexer::findType(const std::string &line) const
 
 void Lexer::tokenise(std::string &line, cmd &inst) const {
 		static const std::map<std::string, eInst > typ = {
+			{"pop",		eInst::pop},
 			{"dump",	eInst::dump },
 			{"add",		eInst::add },
 			{"sub",		eInst::subtract },
@@ -186,7 +187,10 @@ void Lexer::input(int ac, char **av) {
 	{
 		for (int i = 1; i < ac; i++) {
 			try {
+				std::regex fileType("(.*).*\\.avm$");
 				std::string fileName(av[i]);
+				if (!std::regex_match(fileName.c_str(), fileType))
+					throw AvmExceptions::ExceptionString("Failed to open " + fileName);
 				read(fileName);
 			}
 			catch (std::exception &e) {
@@ -197,5 +201,4 @@ void Lexer::input(int ac, char **av) {
 	}
 	else
 		read();
-	//TODO: https://github.com/Svalorzen/cpp-readline
 }

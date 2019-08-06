@@ -2,14 +2,8 @@
 # define OPERANDSFACTORY_HPP
 
 # include "IOperand.hpp"
-# include <map>
-
-//TODO: pulymorth in factory method pattern?
-// https://codereview.stackexchange.com/questions/197486/singleton-class-and-correct-way-to-access-it-in-c
 
 # define  FACTORY OperandsFactory::instance()
-//# define  FACTORY(rType, val) OperandsFactory::instance().createOperand( rType, value )
-
 
 class OperandsFactory {
 private:

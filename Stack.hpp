@@ -5,7 +5,7 @@
 # include <stack>
 # include <iterator>
 # include <deque>
-# include <cctype> //
+# include <cctype>
 # include <cmath>
 
 #include "IOperand.hpp"
@@ -45,7 +45,6 @@ public:
 	void			div();
 	void			mod();
 	void			print();
-	void			exit();
 	void			clear();
 	void			average();
 	void			mlog();

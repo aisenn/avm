@@ -15,7 +15,7 @@ private:
 	}
 
 public:
-	Operand(T value) {
+	Operand(T) {
 		throw(AvmExceptions::InvalidValue());
 	}
 	Operand(Operand const & cp);

@@ -14,7 +14,6 @@ public:
 	class ModuloByZero : public std::exception { char const * what( void ) const noexcept; };
 	class PopOnEmptyStack : public std::exception { char const * what( void ) const noexcept; };
 	class PrintOnEmptyStack : public std::exception { char const * what( void ) const noexcept; };
-
 	class UndefinedInstruction : public std::bad_function_call { char const * what( void ) const noexcept; };
 	class InvalidValue : public std::exception { char const * what( void ) const noexcept; };
 	class BadFunction : public std::bad_function_call { char const * what( void ) const noexcept; };
@@ -22,13 +21,13 @@ public:
 	class Overflow : public std::overflow_error {
 	public:
 		Overflow(const std::string &msg);
-		char const * what( void ) const _NOEXCEPT;
+		char const * what( void ) const noexcept;
 	};
 	class Underflow : public std::underflow_error {
 	public: Underflow(const std::string &s);
 
 	private:
-		char const * what( void ) const _NOEXCEPT;
+		char const * what( void ) const noexcept ;
 	};
 
 	class ExceptionString : public std::logic_error {

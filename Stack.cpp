@@ -129,12 +129,6 @@ void Stack::print() {
 		std::cout << c << std::endl;
 }
 
-void Stack::exit() {
-	this->dump();
-	system("leaks avm"); //TODO: delete
-	std::exit(0);
-}
-
 void Stack::clear() {
 	Stack().swap(STACK);
 }
