@@ -69,7 +69,10 @@ IOperand const * Operand<T>::operator+( IOperand const & rhs ) const {
 template<class T>
 IOperand const * Operand<T>::operator-( IOperand const & rhs ) const {
 	if (this->getPrecision() < rhs.getPrecision())
-		return (rhs - *this);
+	{
+		std::unique_ptr<const IOperand> tmp(FACTORY.createOperand(rhs.getType(), this->_strValue));
+		return *tmp - rhs;
+	}
 	T lhs_value = static_cast<T>(this->_value);
 	T rhs_value = static_cast<T>(std::stod(rhs.toString()));
 	std::string res = std::to_string(lhs_value - rhs_value);
@@ -93,7 +96,10 @@ IOperand const * Operand<T>::operator/( IOperand const & rhs ) const {
 	if (rhs.toString() == "0") //TODO: overload comparison operator ???
 		throw (AvmExceptions::DivideByZero());
 	if (this->getPrecision() < rhs.getPrecision())
-		return *FACTORY.createOperand(rhs.getType(), this->_strValue) / rhs;
+	{
+		std::unique_ptr<const IOperand> tmp(FACTORY.createOperand(rhs.getType(), this->_strValue));
+		return *tmp / rhs;
+	}
 	T lhs_value = static_cast<T>(this->_value);
 	T rhs_value = static_cast<T>(std::stod(rhs.toString()));
 	std::string res = std::to_string(lhs_value / rhs_value);
@@ -106,7 +112,10 @@ IOperand const * Operand<T>::operator%( IOperand const & rhs ) const {
 	if (rhs.toString() == "0") //TODO: overload comparison operator ???
 		throw (AvmExceptions::ModuloByZero());
 	if (this->getPrecision() < rhs.getPrecision())
-		return *FACTORY.createOperand(rhs.getType(), this->_strValue) % rhs;
+	{
+		std::unique_ptr<const IOperand> tmp(FACTORY.createOperand(rhs.getType(), this->_strValue));
+		return *tmp % rhs;
+	}
 	T lhs_value = static_cast<T>(this->_value);
 	T rhs_value = static_cast<T>(std::stod(rhs.toString()));
 	std::string res = std::to_string(std::fmod(lhs_value, rhs_value));

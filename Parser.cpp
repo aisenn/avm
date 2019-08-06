@@ -49,7 +49,6 @@ void	Parser::commandsParsing() {
 			try {
 				if (it.inst == eInst::exit) {
 					_names.pop_front();
-					STACK.msqrt();
 					STACK.dump();
 					STACK.clear();
 					std::cout << "\033[1;0m" << std::endl;
@@ -66,6 +65,10 @@ void	Parser::commandsParsing() {
 					case eInst::divide : STACK.div(); break;
 					case eInst::modulo : STACK.mod(); break;
 					case eInst::average : STACK.average(); break;
+					case eInst::pow : STACK.mpow(it.type, it.value); break;
+					case eInst::log : STACK.mlog(); break;
+					case eInst::sqrt : STACK.msqrt(); break;
+					case eInst::clear : STACK.clear(); break;
 					case eInst::print : STACK.print(); break;
 					default: throw (AvmExceptions::UndefinedInstruction());
 				}

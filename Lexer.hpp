@@ -20,6 +20,10 @@ enum class eInst {
 	divide,
 	modulo,
 	average,
+	log,
+	sqrt,
+	pow,
+	clear,
 	print,
 	exit
 };
@@ -37,17 +41,9 @@ private:
 	const std::regex rAssert;
 	const std::regex rType;
 	const std::regex rDigit;
-	const std::regex rPop;
-	const std::regex rDump;
-	const std::regex rAdd;
-	const std::regex rSub;
-	const std::regex rMul;
-	const std::regex rDiv;
-	const std::regex rMod;
-	const std::regex rAverage;
-	const std::regex rPrint;
-	const std::regex rExit;
+	const std::regex rPow;
 	const std::regex rEndOfProg;
+	const std::regex rInst;
 
 	Lexer();
 	~Lexer();

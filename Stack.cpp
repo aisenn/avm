@@ -150,3 +150,35 @@ void Stack::average() {
 		this->div();
 	}
 }
+
+void Stack::mlog() {
+	std::unique_ptr<const IOperand> tmp(this->top());
+	auto val = std::stod(tmp->toString());
+	if (val == 0)
+		throw(AvmExceptions::ExceptionString("Pole error occurs in log()"));
+	if (val < 0)
+		throw(AvmExceptions::ExceptionString("Domain error occurs in log()"));
+	this->pop();
+	this->push(FACTORY.createOperand(DOUBLE, std::to_string(log(val))));
+}
+
+void Stack::msqrt() {
+	if (this->top()->toString() != "0") {
+		std::unique_ptr<const IOperand> tmp(this->top());
+		auto val = std::stod(tmp->toString());
+		if (val < 0)
+			throw (AvmExceptions::ExceptionString("Domain error occurs in sqrt()"));
+		this->pop();
+		this->push(FACTORY.createOperand(DOUBLE, std::to_string(sqrt(val))));
+	}
+}
+
+void Stack::mpow(eOperandType &type, std::string &strValue) {
+	std::unique_ptr<const IOperand> tmp(this->top());
+	auto lhs = std::stod(tmp->toString());
+	auto rhs = std::stod(strValue);
+	if (rhs < 0)
+		throw(AvmExceptions::ExceptionString("Error while pow()"));
+	this->pop();
+	this->push(FACTORY.createOperand(type, std::to_string(pow(lhs, rhs))));
+}

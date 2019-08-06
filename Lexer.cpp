@@ -1,38 +1,21 @@
 #include "Lexer.hpp"
 #include "AvmExceptions.hpp"
 #include <iostream>
-#include <fstream> //
-#include <map> //
-#include <sstream> //
-#include <sys/stat.h> //
-
-//TODO: https://solarianprogrammer.com/2011/10/12/cpp-11-regex-tutorial/
-// https://stackoverflow.com/questions/3279543/what-is-the-copy-and-swap-idiom/3279550#3279550
-// http://pygments.org/docs/lexerdevelopment/
-// https://nitschinger.at/Writing-a-simple-lexer-in-PHP/
-// https://web-answers.ru/c/probel-shkipera-pri-ispolzovanii-boost-spirit-qi-i.html
-// http://kiri11.ru/boost_spirit_qi_part5/
+#include <fstream>
+#include <map>
+#include <sys/stat.h>
 
 //**********************************************
 //*          CONSTRUCTOR / DESTRUCTOR          *
 //**********************************************
-//rInst(R"(^[ \t\n]*(pop|dump|add|sub|mul|div|mod|exit|print)[ \t\n]*)"),
 Lexer::Lexer()
 	: rPush(R"(^[\s]*(push)[\s]*((int(8|16|32))|double|float)\(([^)]+)\)[\s]*)"),
 	  rAssert(R"(^[\s]*(assert)[\s]*((int(8|16|32))|double|float)\(([^)]+)\)[\s]*)"),
 	  rType("(int(8|16|32)|(double|float))"),
 	  rDigit(R"(\(((\+|-)?[[:digit:]]+)(\.(([[:digit:]]+)?))?((e|E)((\+|-)?)[[:digit:]]+)?\))"),
-	  rPop(R"(^[\s]*(pop)[\s]*)"),
-	  rDump(R"(^[\s]*(dump)[\s]*)"),
-	  rAdd(R"(^[\s]*(add)[\s]*)"),
-	  rSub(R"(^[\s]*(sub)[\s]*)"),
-	  rMul(R"(^[\s]*(mul)[\s]*)"),
-	  rDiv(R"(^[\s]*(div)[\s]*)"),
-	  rMod(R"(^[\s]*(mod)[\s]*)"),
-	  rAverage(R"(^[\s]*(average)[\s]*)"),
-	  rPrint(R"(^[\s]*(print)[\s]*)"),
-	  rExit(R"(^[\s]*(exit)[\s]*)"),
-	  rEndOfProg(R"(^[\s]*(;;)[\s]*)") {}
+	  rPow(R"(^[\s]*(pow)[\s]*((int(8|16|32))|double|float)\(([^)]+)\)[\s]*)"),
+	  rEndOfProg(R"(^[\s]*(;;)[\s]*)"),
+	  rInst("((pop|dump|add|sub|mul|div|mod|average|log|sqrt|clear|exit|print))"){}
 
 Lexer::~Lexer() {}
 
@@ -43,10 +26,6 @@ Lexer &Lexer::instance() {
 	static Lexer instance;
 	return instance;
 }
-
-// TODO: throw ex when more the one match?
-// TODO: empty arg int()
-// TODO: argument like int8(42
 
 //**********************************************
 //*          PRIVATE MEMBER FUNCTIONS          *
@@ -66,23 +45,6 @@ std::string	Lexer::findValue(const std::string &line) const {
 
 eOperandType Lexer::findType(const std::string &line) const
 {
-/*	std::smatch m;
-	if (std::regex_search(line.begin(), line.end(), m, this->rType)) {
-		std::vector<std::string> tab{"int8", "int16", "int32", "float", "double"};
-		auto it = std::find(tab.begin(), tab.end(), m.str());
-		if (it != tab.end()) {
-			switch (std::distance(tab.begin(), it)) {
-				case 0: return INT8;
-				case 1: return INT16;
-				case 2: return INT32;
-				case 3: return FLOAT;
-				case 4: return DOUBLE;
-				default: throw (AvmExceptions::SyntaxError(line));
-			}
-		}
-	}
-	throw (AvmExceptions::SyntaxError(line));*/
-
 	std::smatch m;
 	static const std::map<std::string, eOperandType> typeMap = {
 			{"int8",	INT8	},
@@ -102,31 +64,32 @@ eOperandType Lexer::findType(const std::string &line) const
 }
 
 void Lexer::tokenise(std::string &line, cmd &inst) const {
-	/*	static const std::map<std::string, cmd> typ = {
-			{"dump",	{eInst::dump,		eNULL, ""	} },
-			{"add",		{eInst::add,		eNULL, ""	} },
-			{"sub",		{eInst::subtract,	eNULL, ""	} },
-			{"mul",		{eInst::multiply,	eNULL, ""	} },
-			{"div",		{eInst::divide,		eNULL, ""	} },
-			{"mod",		{eInst::modulo,		eNULL, ""	} },
-			{"print",	{eInst::print,		eNULL, ""	} },
-			{"exit",	{eInst::exit,		eNULL, ""	} },
+		static const std::map<std::string, eInst > typ = {
+			{"dump",	eInst::dump },
+			{"add",		eInst::add },
+			{"sub",		eInst::subtract },
+			{"mul",		eInst::multiply },
+			{"div",		eInst::divide },
+			{"mod",		eInst::modulo },
+			{"print",	eInst::print },
+			{"average",	eInst::average },
+			{"log",		eInst::log },
+			{"sqrt",	eInst::sqrt },
+			{"clear",	eInst::clear },
+			{"exit",	eInst::exit },
 	};
 
 	std::smatch m;
-	if (std::regex_match(line, m, rInst))
+	if (std::regex_search(line, m, rInst))
 	{
-		auto it = typ.lower_bound(m.str());
+		std::regex tt(R"((\s*)(\S+)(\s*))");
+		if (!std::regex_match(line.c_str(), tt))
+			throw (AvmExceptions::SyntaxError());
+		auto it = typ.find(m.str());
 		if(it != typ.end())
-			return it->second;
+			inst.inst = it->second;
 	}
-	if (std::regex_match(line.c_str(), rPush))
-		return {eInst::push, findType(line), findValue(line)};
-	else if (std::regex_match(line.c_str(), rAssert))
-		return {eInst::assert, findType(line), findValue(line)};
-	throw(AvmExceptions::SyntaxError(line));*/
-
-	if (std::regex_match(line.c_str(), rPush)) {
+	else if (std::regex_match(line.c_str(), rPush)) {
 		inst.inst = eInst::push;
 		inst.type = findType(line);
 		inst.value = findValue(line);
@@ -136,28 +99,11 @@ void Lexer::tokenise(std::string &line, cmd &inst) const {
 		inst.type = findType(line);
 		inst.value = findValue(line);
 	}
-	else if (std::regex_match(line.c_str(), rPop))
-		inst.inst = eInst::pop;
-	else if (std::regex_match(line.c_str(), rDump))
-		inst.inst = eInst::dump;
-	else if (std::regex_match(line.c_str(), rAssert))
-		inst.inst = eInst::assert;
-	else if (std::regex_match(line.c_str(), rAdd))
-		inst.inst = eInst::add;
-	else if (std::regex_match(line.c_str(), rSub))
-		inst.inst = eInst::subtract;
-	else if (std::regex_match(line.c_str(), rMul))
-		inst.inst = eInst::multiply;
-	else if (std::regex_match(line.c_str(), rDiv))
-		inst.inst = eInst::divide;
-	else if (std::regex_match(line.c_str(), rMod))
-		inst.inst = eInst::modulo;
-	else if (std::regex_match(line.c_str(), rAverage))
-			inst.inst = eInst::average;
-	else if (std::regex_match(line.c_str(), rPrint))
-		inst.inst = eInst::print;
-	else if (std::regex_match(line.c_str(), rExit))
-		inst.inst = eInst::exit;
+	else if (std::regex_match(line.c_str(), rPow)) {
+		inst.inst = eInst::pow;
+		inst.type = findType(line);
+		inst.value = findValue(line);
+	}
 	else
 		throw(AvmExceptions::SyntaxError());
 }

@@ -36,7 +36,7 @@ T static operandSizeCheck(std::string const & value) {
 		long double val = std::stold(value);
 		if (val > std::numeric_limits<T>::max())
 			throw AvmExceptions::Overflow(type<T>());
-		else if (val < std::numeric_limits<T>::min())
+		else if (val < std::numeric_limits<T>::lowest())
 			throw AvmExceptions::Underflow(type<T>());
 		else if (!std::isnormal(val) && val != 0)
 			throw AvmExceptions::InvalidValue();
